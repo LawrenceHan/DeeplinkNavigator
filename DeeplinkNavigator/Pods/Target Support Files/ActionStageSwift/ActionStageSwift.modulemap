@@ -1,0 +1,6 @@
+framework module ActionStageSwift {
+  umbrella header "ActionStageSwift-umbrella.h"
+
+  export *
+  module * { export * }
+}
