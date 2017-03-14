@@ -14,7 +14,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
 //        let URL = "mg://userdetail/?action=mg/userdetail/pullrefresh&action=mg/userdetail/update"
-        let URL = "mg://userdetail/action:/mg/userdetail/pulltorefresh/"
+        let URL = "mg://userdetail/action:/mg/userdetail/pulltorefresh/?uid=4&mid=6"
         print("Navigator: Push \(URL)")
         Navigator.push(URL)
     }
