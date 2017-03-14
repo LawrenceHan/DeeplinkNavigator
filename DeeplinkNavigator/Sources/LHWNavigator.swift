@@ -53,13 +53,15 @@ open class LHWURLNavigator {
     
     open func map(_ urlPattern: LHWURLConvertible, _ navigable: LHWURLNavigable.Type) {
         let URLString = LHWURLMatcher.default.normalized(urlPattern, scheme: scheme).urlStringValue
-        self.urlMap[URLString] = navigable
+        urlMap[URLString] = navigable
     }
     
-    open func viewController(for url: LHWURLConvertible, userInfo: [AnyHashable: Any]? = nil) -> UIViewController? {
+    open func viewController(for url: LHWURLConvertible,
+                             queries: [URLQueryItem]? = nil,
+                             userInfo: [AnyHashable: Any]? = nil) -> UIViewController? {
         if let urlMatchComponents = LHWURLMatcher.default.match(url, scheme: scheme, from: Array(urlMap.keys)) {
-            let navigable = self.urlMap[urlMatchComponents.pattern]
-            return navigable?.init(url: url, values: urlMatchComponents.values, userInfo: userInfo) as? UIViewController
+            let navigable = urlMap[urlMatchComponents.pattern]
+            return navigable?.init(url: url, values: urlMatchComponents.values, queries: queries, userInfo: userInfo) as? UIViewController
         }
         return nil
     }
@@ -71,10 +73,10 @@ open class LHWURLNavigator {
         from: UINavigationController? = nil,
         animated: Bool = true
         ) -> UIViewController? {
-        guard let viewController = viewController(for: url, userInfo: userInfo) else {
+        guard let viewController = viewController(for: url, queries: url.queryItems, userInfo: userInfo) else {
             return nil
         }
-        return self.push(viewController, from: from, animated: animated)
+        return push(viewController, from: from, animated: animated)
     }
     
     @discardableResult
@@ -123,9 +125,9 @@ open class LHWURLNavigator {
     
     @discardableResult
     open func open(_ url: LHWURLConvertible) -> Bool {
-        let urlOpenHandlersKeys = Array(self.urlOpenHandlers.keys)
-        if let urlMatchComponents = LHWURLMatcher.default.match(url, scheme: self.scheme, from: urlOpenHandlersKeys) {
-            let handler = self.urlOpenHandlers[urlMatchComponents.pattern]
+        let urlOpenHandlersKeys = Array(urlOpenHandlers.keys)
+        if let urlMatchComponents = LHWURLMatcher.default.match(url, scheme: scheme, from: urlOpenHandlersKeys) {
+            let handler = urlOpenHandlers[urlMatchComponents.pattern]
             if handler?(url, urlMatchComponents.values) == true {
                 return true
             }

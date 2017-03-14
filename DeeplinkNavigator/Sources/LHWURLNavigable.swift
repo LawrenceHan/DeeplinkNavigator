@@ -30,5 +30,5 @@
 import Foundation
 
 public protocol LHWURLNavigable {
-    init?(url: LHWURLConvertible, values: [String: Any], userInfo: [AnyHashable: Any]?)
+    init?(url: LHWURLConvertible, values: [String: Any], queries: [URLQueryItem]?, userInfo: [AnyHashable: Any]?)
 }

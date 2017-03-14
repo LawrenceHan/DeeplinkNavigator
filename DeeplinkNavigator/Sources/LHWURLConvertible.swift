@@ -56,7 +56,7 @@ extension LHWURLConvertible {
     
     @available(iOS 8, *)
     public var queryItems: [URLQueryItem]? {
-        return URLComponents(string: self.urlStringValue)?.queryItems
+        return URLComponents(string: urlStringValue)?.queryItems
     }
 }
 

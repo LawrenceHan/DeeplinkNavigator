@@ -59,8 +59,10 @@ open class LHWURLMatcher {
             // e.g. ["myapp:", "user", "<int:id>"]
             let urlPatternPathComponents = urlPattern.components(separatedBy: "/")
             let containsPathPlaceholder = urlPatternPathComponents.contains { $0.hasPrefix("<path:") }
-            guard containsPathPlaceholder || urlPatternPathComponents.count == urlPathComponents.count else {
-                continue
+            let containsActionPlaceholder = urlPatternPathComponents.contains { $0.hasPrefix("<action:") }
+            guard containsPathPlaceholder || containsActionPlaceholder ||
+                urlPatternPathComponents.count == urlPathComponents.count else {
+                    continue
             }
             
             var values = [String: Any]()
@@ -75,8 +77,8 @@ open class LHWURLMatcher {
                                                         atIndex: i)
                 if let (key, value) = info {
                     values[key] = value // e.g. ["id": 123]
-                    if component.hasPrefix("<path:") {
-                        break // there's no more placeholder after <path:>
+                    if component.hasPrefix("<path:") || component.hasPrefix("<action:") {
+                        break // there's no more placeholder after <path:> or <action:>
                     }
                 } else if component != urlPathComponents[i] {
                     continue outer
@@ -164,7 +166,7 @@ open class LHWURLMatcher {
             return (placeholder, urlPathComponents[index])
         }
         
-        let (type, key) = (typeAndKey[0], typeAndKey[1]) // e.g. ("int", "id")
+        var (type, key) = (typeAndKey[0], typeAndKey[1]) // e.g. ("int", "id")
         let value: Any?
         switch type {
         case "UUID": value = UUID(uuidString: urlPathComponents[index]) // e.g. 123e4567-e89b-12d3-a456-426655440000
@@ -172,7 +174,9 @@ open class LHWURLMatcher {
         case "int": value = Int(urlPathComponents[index]) // e.g. 123
         case "float": value = Float(urlPathComponents[index]) // e.g. 123.0
         case "path": value = urlPathComponents[index..<urlPathComponents.count].joined(separator: "/")
-        case "action": value = String(urlPathComponents[index])
+        case "action":
+            value = urlPathComponents[index+1..<urlPathComponents.count].joined(separator: "/")
+            key = "action"
         default:
             if let customURLValueTypeHandler = customURLValueMatcherHandlers[type] {
                 value = customURLValueTypeHandler(urlPathComponents[index])

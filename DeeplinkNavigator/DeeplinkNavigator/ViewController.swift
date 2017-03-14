@@ -13,9 +13,10 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        let URL = "mg://userdetail/<action:mg/userdetail/pullToRefresh>/?uid=5&mid=6"
-        Navigator.push(URL)
+//        let URL = "mg://userdetail/?action=mg/userdetail/pullrefresh&action=mg/userdetail/update"
+        let URL = "mg://userdetail/action:/mg/userdetail/pulltorefresh/"
         print("Navigator: Push \(URL)")
+        Navigator.push(URL)
     }
 
     override func didReceiveMemoryWarning() {
