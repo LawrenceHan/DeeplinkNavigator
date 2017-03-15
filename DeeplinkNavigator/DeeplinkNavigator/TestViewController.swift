@@ -9,6 +9,8 @@
 import UIKit
 
 class TestViewController: UIViewController, LHWURLNavigable {
+    var initialAction: String?
+    
     init() {
         super.init(nibName: nil, bundle: nil)
     }
@@ -22,6 +24,9 @@ class TestViewController: UIViewController, LHWURLNavigable {
                                queries: [URLQueryItem]?,
                                userInfo: [AnyHashable: Any]?) {
         self.init()
-        print("Received action: \(values["action"]), queries: \(queries)")
+        if let action = values["action"] as? String {
+            initialAction = action
+        }
+        print("Received action: \(initialAction), queries: \(queries)")
     }
 }
