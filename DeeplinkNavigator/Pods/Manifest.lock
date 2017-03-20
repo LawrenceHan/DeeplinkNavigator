@@ -1,11 +1,11 @@
 PODS:
-  - ActionStageSwift (0.0.3)
+  - ActionStageSwift (0.0.5)
 
 DEPENDENCIES:
   - ActionStageSwift
 
 SPEC CHECKSUMS:
-  ActionStageSwift: a63e94c7deda084a705d1e61f97e57b71a7d9b90
+  ActionStageSwift: 325683869d9042a117ec4cb4df7e1a7ab752ca4c
 
 PODFILE CHECKSUM: e865ef4689d6350a177e01e2ef63adfe510807b8
 

@@ -27,7 +27,7 @@
 
 import Foundation
 
-// MRAK: -
+// MRAK: - Threading
 public func LHW_MUTEXLOCKER_INIT() -> pthread_mutex_t {
     var mutex: pthread_mutex_t = pthread_mutex_t()
     pthread_mutex_init(&mutex, nil)
@@ -69,7 +69,7 @@ public func LHW_SPINLOCKER_UNLOCK(_ lock: inout OSSpinLock) {
     queue.asyncAfter(deadline: .now()+delay, execute: closure)
 }
 
-// MRAK: -
+// MRAK: - Extensions
 extension Array where Element: AnyObject {
     public mutating func remove(object: Element) {
         if let index = index(where: { $0 === object }) {
@@ -77,3 +77,51 @@ extension Array where Element: AnyObject {
         }
     }
 }
+
+// MARK: - Commons
+public let LHWDocumentsPath: String = {
+    var path: String? = nil
+    let groupName = "group."+Bundle.main.bundleIdentifier!
+    if let groupURL = GlobalFileManager.containerURL(forSecurityApplicationGroupIdentifier: groupName) {
+        let documentsPathURL = groupURL.appendingPathComponent("Documents")
+        do {
+            try GlobalFileManager.createDirectory(at: documentsPathURL, withIntermediateDirectories: true, attributes: nil)
+        } catch {
+        }
+        path = documentsPathURL.path
+    } else {
+        path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+    }
+    
+    return path!
+}()
+
+public let LHWCachesPath: String = {
+    var path: String? = nil
+    let groupName = "group."+Bundle.main.bundleIdentifier!
+    if let groupURL = GlobalFileManager.containerURL(forSecurityApplicationGroupIdentifier: groupName) {
+        let documentsPathURL = groupURL.appendingPathComponent("Caches")
+        do {
+            try GlobalFileManager.createDirectory(at: documentsPathURL, withIntermediateDirectories: true, attributes: nil)
+        } catch {
+        }
+        path = documentsPathURL.path
+    } else {
+        path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+    }
+    
+    return path!
+}()
+
+
+
+
+
+
+
+
+
+
+
+
+
