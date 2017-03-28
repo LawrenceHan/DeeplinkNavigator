@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		028BD6D71E8A934C000F43E7 /* LHWNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028BD6D21E8A934C000F43E7 /* LHWNavigator.swift */; };
+		028BD6D81E8A934C000F43E7 /* LHWURLConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028BD6D31E8A934C000F43E7 /* LHWURLConvertible.swift */; };
+		028BD6D91E8A934C000F43E7 /* LHWURLMatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028BD6D41E8A934C000F43E7 /* LHWURLMatcher.swift */; };
+		028BD6DA1E8A934C000F43E7 /* LHWURLNavigable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028BD6D51E8A934C000F43E7 /* LHWURLNavigable.swift */; };
+		028BD6DB1E8A934C000F43E7 /* UIViewController+TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028BD6D61E8A934C000F43E7 /* UIViewController+TopViewController.swift */; };
 		02E0B7541E7662AD00A6845D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E0B7531E7662AD00A6845D /* AppDelegate.swift */; };
 		02E0B7561E7662AD00A6845D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E0B7551E7662AD00A6845D /* ViewController.swift */; };
 		02E0B7591E7662AD00A6845D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02E0B7571E7662AD00A6845D /* Main.storyboard */; };
@@ -14,11 +19,6 @@
 		02E0B75E1E7662AD00A6845D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02E0B75C1E7662AD00A6845D /* LaunchScreen.storyboard */; };
 		02E0B7851E77B84100A6845D /* DeeplinkNavigatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E0B7841E77B84100A6845D /* DeeplinkNavigatorTests.swift */; };
 		02E0B7911E77BC4500A6845D /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E0B7901E77BC4500A6845D /* TestViewController.swift */; };
-		02E0B7981E77F33400A6845D /* LHWNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E0B7931E77F33400A6845D /* LHWNavigator.swift */; };
-		02E0B7991E77F33400A6845D /* LHWURLConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E0B7941E77F33400A6845D /* LHWURLConvertible.swift */; };
-		02E0B79A1E77F33400A6845D /* LHWURLMatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E0B7951E77F33400A6845D /* LHWURLMatcher.swift */; };
-		02E0B79B1E77F33400A6845D /* LHWURLNavigable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E0B7961E77F33400A6845D /* LHWURLNavigable.swift */; };
-		02E0B79C1E77F33400A6845D /* UIViewController+TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E0B7971E77F33400A6845D /* UIViewController+TopViewController.swift */; };
 		E9F04E7FCB32F69EBE12ABD0 /* Pods_DeeplinkNavigator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41980B3897308074789740B2 /* Pods_DeeplinkNavigator.framework */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +33,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		028BD6D21E8A934C000F43E7 /* LHWNavigator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LHWNavigator.swift; sourceTree = "<group>"; };
+		028BD6D31E8A934C000F43E7 /* LHWURLConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LHWURLConvertible.swift; sourceTree = "<group>"; };
+		028BD6D41E8A934C000F43E7 /* LHWURLMatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LHWURLMatcher.swift; sourceTree = "<group>"; };
+		028BD6D51E8A934C000F43E7 /* LHWURLNavigable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LHWURLNavigable.swift; sourceTree = "<group>"; };
+		028BD6D61E8A934C000F43E7 /* UIViewController+TopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+TopViewController.swift"; sourceTree = "<group>"; };
 		02E0B7501E7662AD00A6845D /* DeeplinkNavigator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeeplinkNavigator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02E0B7531E7662AD00A6845D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		02E0B7551E7662AD00A6845D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -44,11 +49,6 @@
 		02E0B7841E77B84100A6845D /* DeeplinkNavigatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeeplinkNavigatorTests.swift; sourceTree = "<group>"; };
 		02E0B7861E77B84100A6845D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		02E0B7901E77BC4500A6845D /* TestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
-		02E0B7931E77F33400A6845D /* LHWNavigator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LHWNavigator.swift; sourceTree = "<group>"; };
-		02E0B7941E77F33400A6845D /* LHWURLConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LHWURLConvertible.swift; sourceTree = "<group>"; };
-		02E0B7951E77F33400A6845D /* LHWURLMatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LHWURLMatcher.swift; sourceTree = "<group>"; };
-		02E0B7961E77F33400A6845D /* LHWURLNavigable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LHWURLNavigable.swift; sourceTree = "<group>"; };
-		02E0B7971E77F33400A6845D /* UIViewController+TopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+TopViewController.swift"; sourceTree = "<group>"; };
 		396A8B6D9E0B6FF14BE46D72 /* Pods-DeeplinkNavigator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeeplinkNavigator.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DeeplinkNavigator/Pods-DeeplinkNavigator.debug.xcconfig"; sourceTree = "<group>"; };
 		41980B3897308074789740B2 /* Pods_DeeplinkNavigator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DeeplinkNavigator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		97A662B71DA73BA450C99444 /* Pods-DeeplinkNavigator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeeplinkNavigator.release.xcconfig"; path = "Pods/Target Support Files/Pods-DeeplinkNavigator/Pods-DeeplinkNavigator.release.xcconfig"; sourceTree = "<group>"; };
@@ -73,10 +73,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		028BD6D11E8A934C000F43E7 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				028BD6D21E8A934C000F43E7 /* LHWNavigator.swift */,
+				028BD6D31E8A934C000F43E7 /* LHWURLConvertible.swift */,
+				028BD6D41E8A934C000F43E7 /* LHWURLMatcher.swift */,
+				028BD6D51E8A934C000F43E7 /* LHWURLNavigable.swift */,
+				028BD6D61E8A934C000F43E7 /* UIViewController+TopViewController.swift */,
+			);
+			name = Sources;
+			path = ../Sources;
+			sourceTree = "<group>";
+		};
 		02E0B7471E7662AD00A6845D = {
 			isa = PBXGroup;
 			children = (
-				02E0B7921E77F33400A6845D /* Sources */,
+				028BD6D11E8A934C000F43E7 /* Sources */,
 				02E0B7521E7662AD00A6845D /* DeeplinkNavigator */,
 				02E0B7831E77B84100A6845D /* DeeplinkNavigatorTests */,
 				02E0B7511E7662AD00A6845D /* Products */,
@@ -115,18 +128,6 @@
 				02E0B7861E77B84100A6845D /* Info.plist */,
 			);
 			path = DeeplinkNavigatorTests;
-			sourceTree = "<group>";
-		};
-		02E0B7921E77F33400A6845D /* Sources */ = {
-			isa = PBXGroup;
-			children = (
-				02E0B7931E77F33400A6845D /* LHWNavigator.swift */,
-				02E0B7941E77F33400A6845D /* LHWURLConvertible.swift */,
-				02E0B7951E77F33400A6845D /* LHWURLMatcher.swift */,
-				02E0B7961E77F33400A6845D /* LHWURLNavigable.swift */,
-				02E0B7971E77F33400A6845D /* UIViewController+TopViewController.swift */,
-			);
-			path = Sources;
 			sourceTree = "<group>";
 		};
 		575091F0C67A65A57A17079B /* Pods */ = {
@@ -304,12 +305,12 @@
 			files = (
 				02E0B7561E7662AD00A6845D /* ViewController.swift in Sources */,
 				02E0B7911E77BC4500A6845D /* TestViewController.swift in Sources */,
-				02E0B79A1E77F33400A6845D /* LHWURLMatcher.swift in Sources */,
+				028BD6D91E8A934C000F43E7 /* LHWURLMatcher.swift in Sources */,
 				02E0B7541E7662AD00A6845D /* AppDelegate.swift in Sources */,
-				02E0B7981E77F33400A6845D /* LHWNavigator.swift in Sources */,
-				02E0B79C1E77F33400A6845D /* UIViewController+TopViewController.swift in Sources */,
-				02E0B7991E77F33400A6845D /* LHWURLConvertible.swift in Sources */,
-				02E0B79B1E77F33400A6845D /* LHWURLNavigable.swift in Sources */,
+				028BD6D71E8A934C000F43E7 /* LHWNavigator.swift in Sources */,
+				028BD6DB1E8A934C000F43E7 /* UIViewController+TopViewController.swift in Sources */,
+				028BD6D81E8A934C000F43E7 /* LHWURLConvertible.swift in Sources */,
+				028BD6DA1E8A934C000F43E7 /* LHWURLNavigable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
