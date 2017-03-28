@@ -56,6 +56,11 @@ open class LHWURLNavigator {
         urlMap[URLString] = navigable
     }
     
+    open func map(_ urlPattern: LHWURLConvertible, _ handler: @escaping LHWURLOpenHandler) {
+        let URLString = LHWURLMatcher.default.normalized(urlPattern, scheme: self.scheme).urlStringValue
+        self.urlOpenHandlers[URLString] = handler
+    }
+    
     open func viewController(for url: LHWURLConvertible,
                              queries: [URLQueryItem]? = nil,
                              userInfo: [AnyHashable: Any]? = nil) -> UIViewController? {
