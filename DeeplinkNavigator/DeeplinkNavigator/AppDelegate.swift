@@ -18,6 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         Navigator.scheme = "mg://"
         Navigator.map("mg://userdetail/<action:_>", TestViewController.self)
+        Navigator.map("mg://userdetail/<int:userid>", TestViewController.self)
+        Navigator.map("mg://userdetail/<title>", TestViewController.self) // default is string
         
         return true
     }

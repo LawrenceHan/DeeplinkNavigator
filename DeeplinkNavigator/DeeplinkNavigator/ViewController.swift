@@ -29,9 +29,15 @@ class ViewController: UIViewController {
     }
 
     func showAlert() {
-        let URL = "mg://alert?title=Hi&message=Hello World"
+//        let URL = "mg://alert?title=Hi&message=Hello World"
+//        let URL = "/userdetail/action:/mg/userdetail/pulltorefresh/?uid=4&mid=6"
+        let URL = "mogo://host/path?title={\"head\":{\"code\":\"10000\"}}"
+        let json = URL.queryParameters["title"]!
+        let data = json.data(using: .utf8)!
+        let dict = try? JSONSerialization.jsonObject(with: data, options: .allowFragments)
         print("Navigator: Push \(URL)")
-        Navigator.open(URL)
+        Navigator.push(URL)
+//        Navigator.open(URL)
     }
     
     func alert(URL: LHWURLConvertible, values: [String: Any]) -> Bool {

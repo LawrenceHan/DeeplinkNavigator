@@ -27,6 +27,6 @@ class TestViewController: UIViewController, LHWURLNavigable {
         if let action = values["action"] as? String {
             initialAction = action
         }
-        print("Received action: \(initialAction), queries: \(queries)")
+        print("Received action: \(String(describing: initialAction)), queries: \(String(describing: queries))")
     }
 }
