@@ -30,5 +30,12 @@
 import Foundation
 
 public protocol LHWURLNavigable {
+    var initialAction: String? { get }
     init?(url: LHWURLConvertible, values: [String: Any], queries: [URLQueryItem]?, userInfo: [AnyHashable: Any]?)
+}
+
+extension LHWURLNavigable {
+    public var initialAction: String? {
+        return nil
+    }
 }
