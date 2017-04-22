@@ -22,7 +22,7 @@ class ViewController: UIViewController {
 //        Navigator.open(URL)
         
         let button: UIButton = UIButton(type: .system)
-        button.frame = CGRect(x: 100, y: 200, width: 100, height: 44)
+        button.frame = CGRect(x: 100, y: 200, width: 100, height: 50)
         button.setTitle("Show Alert", for: .normal)
         button.addTarget(self, action: #selector(showAlert), for: .touchUpInside)
         view.addSubview(button)
