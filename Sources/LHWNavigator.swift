@@ -141,5 +141,15 @@ open class LHWURLNavigator {
     }
 }
 
+public extension LHWURLNavigator {
+    public func urlMapKeys() -> [String] {
+        return Array(urlMap.keys)
+    }
+    
+    public func urlOpenHandlersKeys() -> [String] {
+        return Array(urlOpenHandlers.keys)
+    }
+}
+
 // MARK: - Default Navigator
 public let Navigator = LHWURLNavigator.default

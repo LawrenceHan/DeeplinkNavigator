@@ -19,10 +19,10 @@ class TestViewController: UIViewController, LHWURLNavigable {
         fatalError("init(coder:) has not been implemented")
     }
     
-    convenience required init?(url: LHWURLConvertible,
-                               values: [String: Any],
-                               queries: [URLQueryItem]?,
-                               userInfo: [AnyHashable: Any]?) {
+    required convenience init?(url: LHWURLConvertible,
+                   values: [String: Any],
+                   queries: [URLQueryItem]?,
+                   userInfo: [AnyHashable: Any]?) {
         self.init()
         if let action = values["action"] as? String {
             initialAction = action
