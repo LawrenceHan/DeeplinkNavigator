@@ -27,15 +27,65 @@
 //  Copyright © 2017 Hanguang. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
+/// A type that can be initialized with URLs and values.
+///
+/// - seealso: `LHWURLNavigator`
 public protocol LHWURLNavigable {
-    var initialAction: String? { get }
-    init?(url: LHWURLConvertible, values: [String: Any], queries: [URLQueryItem]?, userInfo: [AnyHashable: Any]?)
+    /// Creates an instance with specified LHWNavigation and returns it. Returns `nil` if the LHWNavigation
+    /// and the values are not met the condition to create an instance.
+    ///
+    /// For example, to validate whether a value of `id` is an `Int`:
+    ///
+    ///     convenience init?(navigation: LHWNavigation) {
+    ///       guard let id = navigation.values["id"] as? Int else {
+    ///         return nil
+    ///       }
+    ///       self.init(id: id)
+    ///     }
+    ///
+    /// Do not call this initializer directly. It is recommended to use with `URLNavigator`.
+    ///
+    /// - parameter navigation: The navigation information that contains url, values and context.
+    init?(navigation: LHWNavigation)
+    
+    
+    /// Creates an instance with specified LHWNavigation and returns it. Returns `nil` if the LHWNavigation
+    /// and the values are not met the condition to create an instance.
+    ///
+    /// - Returns: A UIViewController from a Storyboard
+    static func viewControllerFromStoryBoard(navigation: LHWNavigation) -> UIViewController?
+    
+    /// Creates an instance with specified LHWNavigation and returns it. Returns `nil` if the LHWNavigation
+    /// and the values are not met the condition to create an instance.
+    ///
+    /// - Returns: A UIViewController from an Xib
+    static func viewControllerFromXib(navigation: LHWNavigation) -> UIViewController?
 }
 
-extension LHWURLNavigable {
-    public var initialAction: String? {
+public extension LHWURLNavigable {
+    init?(navigation: LHWNavigation) {
         return nil
     }
+    
+    static func viewControllerFromStoryBoard(navigation: LHWNavigation) -> UIViewController? {
+        return nil
+    }
+    
+    static func viewControllerFromXib(navigation: LHWNavigation) -> UIViewController? {
+        return nil
+    }
+}
+
+public protocol StoryboardNavigable: LHWURLNavigable {
+    static func viewControllerFromStoryBoard(navigation: LHWNavigation) -> UIViewController?
+}
+
+public protocol XibNavigable: LHWURLNavigable {
+    static func viewControllerFromXib(navigation: LHWNavigation) -> UIViewController?
+}
+
+public protocol InitNavigable: LHWURLNavigable {
+    init?(navigation: LHWNavigation)
 }

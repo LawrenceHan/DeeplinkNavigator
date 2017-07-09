@@ -29,15 +29,65 @@
 
 import UIKit
 
-public typealias _LHWURLConvertible = LHWURLConvertible
-
+/// LHWURLNavigator provides an elegant way to navigate through view controllers by URLs. URLs should be mapped by using
+/// `LHWURLNavigator.map(_:_:)` function.
+///
+/// LHWURLNavigator can be used to map URLs with 2 kind of types: `LHWURLNavigable` and `URLOpenHandler`. `LHWURLNavigable` is
+/// a type which defines an custom initializer and `URLOpenHandler` is a closure. Both an initializer and a closure
+/// have URL and values for its parameters.
+///
+/// URLs can have
+///
+/// Here's an example of mapping URLNaviable-conforming class `UserViewController` to URL:
+///
+///     Navigator.map("myapp://user/<int:id>", UserViewController.self)
+///     Navigator.map("http://<path:_>", MyWebViewController.self)
+///
+/// This URL can be used to push or present the `UserViewController` by providing URLs:
+///
+///     Navigator.push("myapp://user/123")
+///     Navigator.present("http://xoul.kr")
+///
+/// This is another example of mapping `URLOpenHandler` to URL:
+///
+///     Navigator.map("myapp://say-hello") { URL, values in
+///       print("Hello, world!")
+///       return true
+///     }
+///
+/// Use `LHWURLNavigator.openURL()` to execute closures.
+///
+///     Navigator.openURL("myapp://say-hello") // prints "Hello, world!"
+///
+/// - note: Use `UIApplication.openURL()` method to launch other applications or to open URLs in application level.
+///
+/// - seealso: `LHWURLNavigable`
 open class LHWURLNavigator {
-    public typealias LHWURLConvertible = _LHWURLConvertible
-    public typealias LHWURLOpenHandler = (_ url: LHWURLConvertible, _ values: [String: Any]) -> Bool
     
-    private(set) var urlMap = [String: LHWURLNavigable.Type]()
-    private(set) var urlOpenHandlers = [String: LHWURLOpenHandler]()
+    struct URLMapItem {
+        let navigable: LHWURLNavigable.Type
+        let mappingContext: MappingContext?
+    }
     
+    /// A closure type which has URL and values for parameters.
+    public typealias URLOpenHandler = (_ url: LHWURLConvertible, _ values: [String: Any]) -> Bool
+    
+    /// A dictionary to store URLNaviables by URL patterns.
+    private(set) var urlMap = [String: URLMapItem]()
+    
+    /// A dictionary to store URLOpenHandlers by URL patterns.
+    private(set) var urlOpenHandlers = [String: URLOpenHandler]()
+    
+    /// A default scheme. If this value is set, it's available to map URL paths without schemes.
+    ///
+    ///     Navigator.scheme = "myapp"
+    ///     Navigator.map("/user/<int:id>", UserViewController.self)
+    ///     Navigator.map("/post/<title>", PostViewController.self)
+    ///
+    /// this is equivalent to:
+    ///
+    ///     Navigator.map("myapp://user/<int:id>", UserViewController.self)
+    ///     Navigator.map("myapp://post/<title>", PostViewController.self)
     open var scheme: String? {
         didSet {
             if let scheme = self.scheme, scheme.contains("://") {
@@ -46,44 +96,103 @@ open class LHWURLNavigator {
         }
     }
     
+    
+    // MARK: Singleton
+    
+    /// Returns a default navigator. A global constant `Navigator` is a shortcut of `LHWURLNavigator.default`.
+    ///
+    /// - seealso: `Navigator`
     open static let `default` = LHWURLNavigator()
     
-    public init(){
+    
+    // MARK: Initializing
+    
+    public init() {
     }
     
-    open func map(_ urlPattern: LHWURLConvertible, _ navigable: LHWURLNavigable.Type) {
-        let URLString = LHWURLMatcher.default.normalized(urlPattern, scheme: scheme).urlStringValue
-        urlMap[URLString] = navigable
+    
+    // MARK: URL Mapping
+    
+    /// Map an `LHWURLNavigable` to an URL pattern.
+    open func map(_ urlPattern: LHWURLConvertible, _ navigable: LHWURLNavigable.Type, context: MappingContext? = nil) {
+        let URLString = LHWURLMatcher.default.normalized(urlPattern, scheme: self.scheme).urlStringValue
+        self.urlMap[URLString] = URLMapItem(navigable: navigable, mappingContext: context)
     }
     
-    open func map(_ urlPattern: LHWURLConvertible, _ handler: @escaping LHWURLOpenHandler) {
+    /// Map an `URLOpenHandler` to an URL pattern.
+    open func map(_ urlPattern: LHWURLConvertible, _ handler: @escaping URLOpenHandler) {
         let URLString = LHWURLMatcher.default.normalized(urlPattern, scheme: self.scheme).urlStringValue
         self.urlOpenHandlers[URLString] = handler
     }
     
-    open func viewController(for url: LHWURLConvertible,
-                             queries: [URLQueryItem]? = nil,
-                             userInfo: [AnyHashable: Any]? = nil) -> UIViewController? {
-        if let urlMatchComponents = LHWURLMatcher.default.match(url, scheme: scheme, from: Array(urlMap.keys)) {
-            let navigable = urlMap[urlMatchComponents.pattern]
-            return navigable?.init(url: url, values: urlMatchComponents.values, queries: queries, userInfo: userInfo) as? UIViewController
+    /// Returns a matched view controller from a specified URL.
+    ///
+    /// - parameter url: The URL to find view controllers.
+    /// - parameter context: The user extra parameters you want add.
+    /// - returns: A match view controller or `nil` if not matched.
+    open func viewController(for url: LHWURLConvertible, context: NavigationContext? = nil) -> UIViewController? {
+        if let urlMatchComponents = LHWURLMatcher.default.match(url, scheme: self.scheme, from: Array(self.urlMap.keys)) {
+            guard let item = self.urlMap[urlMatchComponents.pattern] else { return nil }
+            let navigation = LHWNavigation(
+                url: url,
+                values: urlMatchComponents.values,
+                mappingContext: item.mappingContext,
+                navigationContext: context
+            )
+            
+            // Determine which protocol should be called
+            if item.navigable is StoryboardNavigable.Type {
+                return item.navigable.viewControllerFromStoryBoard(navigation: navigation)
+            } else if item.navigable is XibNavigable.Type {
+                return item.navigable.viewControllerFromXib(navigation: navigation)
+            } else if item.navigable is InitNavigable.Type {
+                return item.navigable.init(navigation: navigation) as? UIViewController
+            }
         }
         return nil
     }
     
+    // MARK: Pushing View Controllers with URL
+    
+    /// Pushes a view controller using `UINavigationController.pushViewController()`.
+    ///
+    /// This is an example of pushing a view controller to the top-most view contoller:
+    ///
+    ///     Navigator.push("myapp://user/123")
+    ///
+    /// Use the return value to access a view controller.
+    ///
+    ///     let userViewController = Navigator.push("myapp://user/123")
+    ///     userViewController?.doSomething()
+    ///
+    /// - parameter url: The URL to find view controllers.
+    /// - parameter from: The navigation controller which is used to push a view controller. Use application's top-most
+    ///     view controller if `nil` is specified. `nil` by default.
+    /// - parameter animated: Whether animates view controller transition or not. `true` by default.
+    ///
+    /// - returns: The pushed view controller. Returns `nil` if there's no matching view controller or failed to push
+    ///            a view controller.
     @discardableResult
     open func push(
         _ url: LHWURLConvertible,
-        userInfo: [AnyHashable: Any]? = nil,
+        context: NavigationContext? = nil,
         from: UINavigationController? = nil,
         animated: Bool = true
         ) -> UIViewController? {
-        guard let viewController = viewController(for: url, queries: url.queryItems, userInfo: userInfo) else {
+        guard let viewController = self.viewController(for: url, context: context) else {
             return nil
         }
-        return push(viewController, from: from, animated: animated)
+        return self.push(viewController, from: from, animated: animated)
     }
     
+    /// Pushes a view controller using `UINavigationController.pushViewController()`.
+    ///
+    /// - parameter viewController: The `UIViewController` instance to be pushed.
+    /// - parameter from: The navigation controller which is used to push a view controller. Use application's top-most
+    ///     view controller if `nil` is specified. `nil` by default.
+    /// - parameter animated: Whether animates view controller transition or not. `true` by default.
+    ///
+    /// - returns: The pushed view controller. Returns `nil` if failed to push a view controller.
     @discardableResult
     open func push(
         _ viewController: UIViewController,
@@ -93,23 +202,59 @@ open class LHWURLNavigator {
         guard let navigationController = from ?? UIViewController.lhw_topMost?.navigationController else {
             return nil
         }
+        guard (viewController is UINavigationController) == false else { return nil }
         navigationController.pushViewController(viewController, animated: animated)
         return viewController
     }
     
+    
+    // MARK: Presenting View Controllers with URL
+    
+    /// Presents a view controller using `UIViewController.presentViewController()`.
+    ///
+    /// This is an example of presenting a view controller to the top-most view contoller:
+    ///
+    ///     Navigator.present("myapp://user/123")
+    ///
+    /// Use the return value to access a view controller.
+    ///
+    ///     let userViewController = Navigator.present("myapp://user/123")
+    ///     userViewController?.doSomething()
+    ///
+    /// - parameter url: The URL to find view controllers.
+    /// - parameter wrap: Wraps the view controller with a `UINavigationController` if `true` is specified. `false` by
+    ///     default.
+    /// - parameter from: The view controller which is used to present a view controller. Use application's top-most
+    ///     view controller if `nil` is specified. `nil` by default.
+    /// - parameter animated: Whether animates view controller transition or not. `true` by default.
+    /// - parameter completion: Called after the transition has finished.
+    ///
+    /// - returns: The presented view controller. Returns `nil` if there's no matching view controller or failed to
+    ///     present a view controller.
     @discardableResult
     open func present(
         _ url: LHWURLConvertible,
-        userInfo: [AnyHashable: Any]? = nil,
+        context: NavigationContext? = nil,
         wrap: Bool = false,
         from: UIViewController? = nil,
         animated: Bool = true,
         completion: (() -> Void)? = nil
         ) -> UIViewController? {
-        guard let viewController = viewController(for: url, userInfo: userInfo) else { return nil }
-        return present(viewController, wrap: wrap, from: from, animated: animated, completion: completion)
+        guard let viewController = self.viewController(for: url, context: context) else { return nil }
+        return self.present(viewController, wrap: wrap, from: from, animated: animated, completion: completion)
     }
     
+    /// Presents a view controller using `UIViewController.presentViewController()`.
+    ///
+    /// - parameter viewController: The `UIViewController` instance to be presented.
+    /// - parameter wrap: Wraps the view controller with a `UINavigationController` if `true` is specified. `false` by
+    ///     default.
+    /// - parameter from: The view controller which is used to present a view controller. Use application's top-most
+    ///     view controller if `nil` is specified. `nil` by default.
+    /// - parameter animated: Whether animates view controller transition or not. `true` by default.
+    /// - parameter completion: Called after the transition has finished.
+    ///
+    /// - returns: The presented view controller. Returns `nil` if failed to present a view controller.
     @discardableResult
     open func present(
         _ viewController: UIViewController,
@@ -119,6 +264,7 @@ open class LHWURLNavigator {
         completion: (() -> Void)? = nil
         ) -> UIViewController? {
         guard let fromViewController = from ?? UIViewController.lhw_topMost else { return nil }
+        let wrap = wrap && (viewController is UINavigationController) == false
         if wrap {
             let navigationController = UINavigationController(rootViewController: viewController)
             fromViewController.present(navigationController, animated: animated, completion: nil)
@@ -128,11 +274,19 @@ open class LHWURLNavigator {
         return viewController
     }
     
+    
+    // MARK: Opening URL
+    
+    /// Executes the registered `URLOpenHandler`.
+    ///
+    /// - parameter url: The URL to find `URLOpenHandler`s.
+    ///
+    /// - returns: The return value of the matching `URLOpenHandler`. Returns `false` if there's no match.
     @discardableResult
     open func open(_ url: LHWURLConvertible) -> Bool {
-        let urlOpenHandlersKeys = Array(urlOpenHandlers.keys)
-        if let urlMatchComponents = LHWURLMatcher.default.match(url, scheme: scheme, from: urlOpenHandlersKeys) {
-            let handler = urlOpenHandlers[urlMatchComponents.pattern]
+        let urlOpenHandlersKeys = Array(self.urlOpenHandlers.keys)
+        if let urlMatchComponents = LHWURLMatcher.default.match(url, scheme: self.scheme, from: urlOpenHandlersKeys) {
+            let handler = self.urlOpenHandlers[urlMatchComponents.pattern]
             if handler?(url, urlMatchComponents.values) == true {
                 return true
             }
@@ -141,15 +295,8 @@ open class LHWURLNavigator {
     }
 }
 
-public extension LHWURLNavigator {
-    public func urlMapKeys() -> [String] {
-        return Array(urlMap.keys)
-    }
-    
-    public func urlOpenHandlersKeys() -> [String] {
-        return Array(urlOpenHandlers.keys)
-    }
-}
 
 // MARK: - Default Navigator
+
 public let Navigator = LHWURLNavigator.default
+

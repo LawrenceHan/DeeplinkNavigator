@@ -15,12 +15,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        Navigator.scheme = "mg://"
-        Navigator.map("mg://userdetail/<action:_>", TestViewController.self)
-        Navigator.map("mg://userdetail/<int:userid>", TestViewController.self)
-        Navigator.map("mg://userdetail/<title>", TestViewController.self) // default is string
-        
+        Navigator.scheme = "navigator"
+        Navigator.map("/StoryboardNavigable", StoryboardViewController.self)
+        Navigator.map("/XibNavigable", XibViewController.self)
+        Navigator.map("/InitNavigable", InitViewController.self)
         return true
     }
 
@@ -45,7 +43,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
-
 }
 

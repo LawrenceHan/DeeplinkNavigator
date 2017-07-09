@@ -7,18 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		020A7EAF1F1265F800C16785 /* LHWNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020A7EAE1F1265F800C16785 /* LHWNavigation.swift */; };
+		020A7EB21F127B5100C16785 /* XibViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020A7EB01F127B5100C16785 /* XibViewController.swift */; };
+		020A7EB31F127B5100C16785 /* XibViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 020A7EB11F127B5100C16785 /* XibViewController.xib */; };
+		020A7EB71F127C1A00C16785 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020A7EB61F127C1900C16785 /* MainViewController.swift */; };
+		020A7EB91F1285C900C16785 /* Titlable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020A7EB81F1285C900C16785 /* Titlable.swift */; };
 		028BD6D71E8A934C000F43E7 /* LHWNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028BD6D21E8A934C000F43E7 /* LHWNavigator.swift */; };
 		028BD6D81E8A934C000F43E7 /* LHWURLConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028BD6D31E8A934C000F43E7 /* LHWURLConvertible.swift */; };
 		028BD6D91E8A934C000F43E7 /* LHWURLMatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028BD6D41E8A934C000F43E7 /* LHWURLMatcher.swift */; };
 		028BD6DA1E8A934C000F43E7 /* LHWURLNavigable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028BD6D51E8A934C000F43E7 /* LHWURLNavigable.swift */; };
 		028BD6DB1E8A934C000F43E7 /* UIViewController+TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028BD6D61E8A934C000F43E7 /* UIViewController+TopViewController.swift */; };
 		02E0B7541E7662AD00A6845D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E0B7531E7662AD00A6845D /* AppDelegate.swift */; };
-		02E0B7561E7662AD00A6845D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E0B7551E7662AD00A6845D /* ViewController.swift */; };
+		02E0B7561E7662AD00A6845D /* StoryboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E0B7551E7662AD00A6845D /* StoryboardViewController.swift */; };
 		02E0B7591E7662AD00A6845D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02E0B7571E7662AD00A6845D /* Main.storyboard */; };
 		02E0B75B1E7662AD00A6845D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02E0B75A1E7662AD00A6845D /* Assets.xcassets */; };
 		02E0B75E1E7662AD00A6845D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02E0B75C1E7662AD00A6845D /* LaunchScreen.storyboard */; };
 		02E0B7851E77B84100A6845D /* DeeplinkNavigatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E0B7841E77B84100A6845D /* DeeplinkNavigatorTests.swift */; };
-		02E0B7911E77BC4500A6845D /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E0B7901E77BC4500A6845D /* TestViewController.swift */; };
+		02E0B7911E77BC4500A6845D /* InitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E0B7901E77BC4500A6845D /* InitViewController.swift */; };
 		E9F04E7FCB32F69EBE12ABD0 /* Pods_DeeplinkNavigator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41980B3897308074789740B2 /* Pods_DeeplinkNavigator.framework */; };
 /* End PBXBuildFile section */
 
@@ -33,14 +38,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		028BD6D21E8A934C000F43E7 /* LHWNavigator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LHWNavigator.swift; sourceTree = "<group>"; };
-		028BD6D31E8A934C000F43E7 /* LHWURLConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LHWURLConvertible.swift; sourceTree = "<group>"; };
-		028BD6D41E8A934C000F43E7 /* LHWURLMatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LHWURLMatcher.swift; sourceTree = "<group>"; };
-		028BD6D51E8A934C000F43E7 /* LHWURLNavigable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LHWURLNavigable.swift; sourceTree = "<group>"; };
-		028BD6D61E8A934C000F43E7 /* UIViewController+TopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+TopViewController.swift"; sourceTree = "<group>"; };
+		020A7EAE1F1265F800C16785 /* LHWNavigation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = LHWNavigation.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		020A7EB01F127B5100C16785 /* XibViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XibViewController.swift; sourceTree = "<group>"; };
+		020A7EB11F127B5100C16785 /* XibViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XibViewController.xib; sourceTree = "<group>"; };
+		020A7EB61F127C1900C16785 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		020A7EB81F1285C900C16785 /* Titlable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Titlable.swift; sourceTree = "<group>"; };
+		028BD6D21E8A934C000F43E7 /* LHWNavigator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = LHWNavigator.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		028BD6D31E8A934C000F43E7 /* LHWURLConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = LHWURLConvertible.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		028BD6D41E8A934C000F43E7 /* LHWURLMatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = LHWURLMatcher.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		028BD6D51E8A934C000F43E7 /* LHWURLNavigable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = LHWURLNavigable.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		028BD6D61E8A934C000F43E7 /* UIViewController+TopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "UIViewController+TopViewController.swift"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		02E0B7501E7662AD00A6845D /* DeeplinkNavigator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeeplinkNavigator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02E0B7531E7662AD00A6845D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		02E0B7551E7662AD00A6845D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		02E0B7551E7662AD00A6845D /* StoryboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = StoryboardViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		02E0B7581E7662AD00A6845D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		02E0B75A1E7662AD00A6845D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		02E0B75D1E7662AD00A6845D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -48,7 +58,7 @@
 		02E0B7821E77B84100A6845D /* DeeplinkNavigatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DeeplinkNavigatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		02E0B7841E77B84100A6845D /* DeeplinkNavigatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeeplinkNavigatorTests.swift; sourceTree = "<group>"; };
 		02E0B7861E77B84100A6845D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		02E0B7901E77BC4500A6845D /* TestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
+		02E0B7901E77BC4500A6845D /* InitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = InitViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		396A8B6D9E0B6FF14BE46D72 /* Pods-DeeplinkNavigator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeeplinkNavigator.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DeeplinkNavigator/Pods-DeeplinkNavigator.debug.xcconfig"; sourceTree = "<group>"; };
 		41980B3897308074789740B2 /* Pods_DeeplinkNavigator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DeeplinkNavigator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		97A662B71DA73BA450C99444 /* Pods-DeeplinkNavigator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeeplinkNavigator.release.xcconfig"; path = "Pods/Target Support Files/Pods-DeeplinkNavigator/Pods-DeeplinkNavigator.release.xcconfig"; sourceTree = "<group>"; };
@@ -80,6 +90,7 @@
 				028BD6D31E8A934C000F43E7 /* LHWURLConvertible.swift */,
 				028BD6D41E8A934C000F43E7 /* LHWURLMatcher.swift */,
 				028BD6D51E8A934C000F43E7 /* LHWURLNavigable.swift */,
+				020A7EAE1F1265F800C16785 /* LHWNavigation.swift */,
 				028BD6D61E8A934C000F43E7 /* UIViewController+TopViewController.swift */,
 			);
 			name = Sources;
@@ -111,8 +122,12 @@
 			isa = PBXGroup;
 			children = (
 				02E0B7531E7662AD00A6845D /* AppDelegate.swift */,
-				02E0B7551E7662AD00A6845D /* ViewController.swift */,
-				02E0B7901E77BC4500A6845D /* TestViewController.swift */,
+				020A7EB61F127C1900C16785 /* MainViewController.swift */,
+				02E0B7551E7662AD00A6845D /* StoryboardViewController.swift */,
+				020A7EB01F127B5100C16785 /* XibViewController.swift */,
+				020A7EB11F127B5100C16785 /* XibViewController.xib */,
+				02E0B7901E77BC4500A6845D /* InitViewController.swift */,
+				020A7EB81F1285C900C16785 /* Titlable.swift */,
 				02E0B7571E7662AD00A6845D /* Main.storyboard */,
 				02E0B75A1E7662AD00A6845D /* Assets.xcassets */,
 				02E0B75C1E7662AD00A6845D /* LaunchScreen.storyboard */,
@@ -235,6 +250,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				020A7EB31F127B5100C16785 /* XibViewController.xib in Resources */,
 				02E0B75E1E7662AD00A6845D /* LaunchScreen.storyboard in Resources */,
 				02E0B75B1E7662AD00A6845D /* Assets.xcassets in Resources */,
 				02E0B7591E7662AD00A6845D /* Main.storyboard in Resources */,
@@ -303,10 +319,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				02E0B7561E7662AD00A6845D /* ViewController.swift in Sources */,
-				02E0B7911E77BC4500A6845D /* TestViewController.swift in Sources */,
+				020A7EB21F127B5100C16785 /* XibViewController.swift in Sources */,
+				020A7EB71F127C1A00C16785 /* MainViewController.swift in Sources */,
+				02E0B7561E7662AD00A6845D /* StoryboardViewController.swift in Sources */,
+				02E0B7911E77BC4500A6845D /* InitViewController.swift in Sources */,
 				028BD6D91E8A934C000F43E7 /* LHWURLMatcher.swift in Sources */,
 				02E0B7541E7662AD00A6845D /* AppDelegate.swift in Sources */,
+				020A7EB91F1285C900C16785 /* Titlable.swift in Sources */,
+				020A7EAF1F1265F800C16785 /* LHWNavigation.swift in Sources */,
 				028BD6D71E8A934C000F43E7 /* LHWNavigator.swift in Sources */,
 				028BD6DB1E8A934C000F43E7 /* UIViewController+TopViewController.swift in Sources */,
 				028BD6D81E8A934C000F43E7 /* LHWURLConvertible.swift in Sources */,

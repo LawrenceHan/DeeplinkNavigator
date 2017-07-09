@@ -1,5 +1,5 @@
 //
-//  URLMatcher.swift
+//  LHWURLMatcher.swift
 //  URLNavigator
 //
 //  Created by Sklar, Josh on 9/2/16.
@@ -33,36 +33,66 @@
 
 import Foundation
 
+/// LHWURLMatchComponents encapsulates data about a URL match.
+/// It contains the following attributes:
+///
+/// - pattern: The url pattern that was matched.
+/// - values: The values extracted from the URL.
 public struct LHWURLMatchComponents {
     public let pattern: String
     public let values: [String: Any]
 }
 
+/// LHWURLMatcher provides a way to match URLs against a list of specified patterns.
+///
+/// LHWURLMatcher extracts the pattern and the values from the URL if possible.
 open class LHWURLMatcher {
+    
+    /// A closure type which matches a URL value string to a typed value.
     public typealias URLValueMatcherHandler = (String) -> Any?
+    
+    /// A dictionary to store URL value matchers by value type.
     private var customURLValueMatcherHandlers = [String: URLValueMatcherHandler]()
     
+    
+    // MARK: Singleton
+    
     open static let `default` = LHWURLMatcher()
+    
+
+    // MARK: Initialization
     
     public init() {
     }
     
-    open func match(
-        _ url: LHWURLConvertible,
-        scheme: String? = nil,
-        from urlPatterns: [String]
-        ) -> LHWURLMatchComponents? {
-        let normalizedURLString = normalized(url, scheme: scheme).urlStringValue
-        let urlPathComponents = normalizedURLString.components(separatedBy: "/")
+    
+    // MARK: Matching
+    
+    /// Returns a matching URL pattern and placeholder values from specified URL and URL patterns. Returns `nil` if the
+    /// URL is not contained in URL patterns.
+    ///
+    /// For example:
+    ///
+    ///     let LHWURLMatchComponents = matcher.match("myapp://user/123", from: ["myapp://user/<int:id>"])
+    ///
+    /// The value of the `URLPattern` from an example above is `"myapp://user/<int:id>"` and the value of the `values`
+    /// is `["id": 123]`.
+    ///
+    /// - parameter url: The placeholder-filled URL.
+    /// - parameter from: The array of URL patterns.
+    ///
+    /// - returns: A `LHWURLMatchComponents` struct that holds the URL pattern string, a dictionary of URL placeholder
+    ///            values, and any query items.
+    open func match(_ url: LHWURLConvertible, scheme: String? = nil, from urlPatterns: [String]) -> LHWURLMatchComponents? {
+        let normalizedURLString = self.normalized(url, scheme: scheme).urlStringValue
+        let urlPathComponents = normalizedURLString.components(separatedBy: "/") // e.g. ["myapp:", "user", "123"]
         
         outer: for urlPattern in urlPatterns {
             // e.g. ["myapp:", "user", "<int:id>"]
             let urlPatternPathComponents = urlPattern.components(separatedBy: "/")
             let containsPathPlaceholder = urlPatternPathComponents.contains { $0.hasPrefix("<path:") }
-            let containsActionPlaceholder = urlPatternPathComponents.contains { $0.hasPrefix("<action:") }
-            guard containsPathPlaceholder || containsActionPlaceholder ||
-                urlPatternPathComponents.count == urlPathComponents.count else {
-                    continue
+            guard containsPathPlaceholder || urlPatternPathComponents.count == urlPathComponents.count else {
+                continue
             }
             
             var values = [String: Any]()
@@ -72,13 +102,13 @@ open class LHWURLMatcher {
                 guard i < urlPathComponents.count else {
                     continue outer
                 }
-                let info = placeholderKeyValueFrom(urlPatternPathComponent: component,
+                let info = self.placeholderKeyValueFrom(urlPatternPathComponent: component,
                                                         urlPathComponents: urlPathComponents,
                                                         atIndex: i)
                 if let (key, value) = info {
                     values[key] = value // e.g. ["id": 123]
-                    if component.hasPrefix("<path:") || component.hasPrefix("<action:") {
-                        break // there's no more placeholder after <path:> or <action:>
+                    if component.hasPrefix("<path:") {
+                        break // there's no more placeholder after <path:>
                     }
                 } else if component != urlPathComponents[i] {
                     continue outer
@@ -87,15 +117,30 @@ open class LHWURLMatcher {
             
             return LHWURLMatchComponents(pattern: urlPattern, values: values)
         }
-        
         return nil
     }
     
+    // MARK: Utils
+    
+    /// Adds a new handler for matching any custom URL value type.
+    /// If the custom URL type already has a custom handler, this overwrites its handler.
+    ///
+    /// For example:
+    ///
+    ///     matcher.addURLValueMatcherHandler(for: "SSN") { (ssnString) -> AnyObject? in
+    ///       return SSN(string: ssnString)
+    ///     }
+    ///
+    /// The value type that this would match against is "ssn" (i.e. Social Security Number), and the
+    /// handler to be used for that type returns a newly created `SSN` object from the ssn string.
+    ///
+    /// - parameter valueType: The value type (string) to match against.
+    /// - parameter handler: The handler to use when matching against that value type.
     open func addURLValueMatcherHandler(for valueType: String, handler: @escaping URLValueMatcherHandler) {
-        customURLValueMatcherHandlers[valueType] = handler
+        self.customURLValueMatcherHandlers[valueType] = handler
     }
     
-    /// Returns an scheme-appended `URLConvertible` if given `url` doesn't have its scheme.
+    /// Returns an scheme-appended `LHWURLConvertible` if given `url` doesn't have its scheme.
     func url(withScheme scheme: String?, _ url: LHWURLConvertible) -> LHWURLConvertible {
         let urlString = url.urlStringValue
         if let scheme = scheme, !urlString.contains("://") {
@@ -108,43 +153,28 @@ open class LHWURLMatcher {
         } else if scheme == nil && !urlString.contains("://") {
             assertionFailure("Either matcher or URL should have scheme: '\(url)'") // assert only in debug build
         }
-        
         return urlString
     }
-
+    
+    /// Returns the URL by
+    ///
+    /// - Removing redundant trailing slash(/) on scheme
+    /// - Removing redundant double-slashes(//)
+    /// - Removing trailing slash(/) aside from slashes directly following the scheme
+    ///
+    /// - parameter dirtyURL: The dirty URL to be normalized.
+    ///
+    /// - returns: The normalized URL. Returns `nil` if the pecified URL is invalid.
     func normalized(_ dirtyURL: LHWURLConvertible, scheme: String? = nil) -> LHWURLConvertible {
         guard dirtyURL.urlValue != nil else {
             return dirtyURL
         }
-        
-        var urlString = url(withScheme: scheme, url: dirtyURL).urlStringValue
+        var urlString = self.url(withScheme: scheme, dirtyURL).urlStringValue
         urlString = urlString.components(separatedBy: "?")[0].components(separatedBy: "#")[0]
-        urlString = replaceRegex(":/{3,}", "://", urlString)
-        urlString = replaceRegex("(?<!:)/{2,}", "/", urlString)
-        urlString = replaceRegex("(?<!:|:/)/+$", "", urlString)
+        urlString = self.replaceRegex(":/{3,}", "://", urlString)
+        urlString = self.replaceRegex("(?<!:)/{2,}", "/", urlString)
+        urlString = self.replaceRegex("(?<!:|:/)/+$", "", urlString)
         return urlString
-    }
-    
-    func url(withScheme scheme: String?, url: LHWURLConvertible) -> LHWURLConvertible {
-        let urlString = url.urlStringValue
-        if let scheme = scheme, !urlString.contains("://") {
-            #if DEBUG
-                if !urlString.hasPrefix("/") {
-                    NSLog("===== Warning: URL pattern doesn't have leading slash(/): '\(url)'")
-                }
-            #endif
-            return scheme + ":/" + urlString
-        } else if scheme == nil && !urlString.contains("://") {
-            assertionFailure("===== Warning: either matcher or URL should have scheme: '\(url)'") // assert only in debug build
-        }
-        
-        return urlString
-    }
-    
-    func replaceRegex(_ pattern: String, _ repl: String, _ string: String) -> String {
-        guard let regex = try? NSRegularExpression(pattern: pattern, options: []) else { return string }
-        let range = NSMakeRange(0, string.characters.count)
-        return regex.stringByReplacingMatches(in: string, options: [], range: range, withTemplate: repl)
     }
     
     func placeholderKeyValueFrom(
@@ -166,7 +196,7 @@ open class LHWURLMatcher {
             return (placeholder, urlPathComponents[index])
         }
         
-        var (type, key) = (typeAndKey[0], typeAndKey[1]) // e.g. ("int", "id")
+        let (type, key) = (typeAndKey[0], typeAndKey[1]) // e.g. ("int", "id")
         let value: Any?
         switch type {
         case "UUID": value = UUID(uuidString: urlPathComponents[index]) // e.g. 123e4567-e89b-12d3-a456-426655440000
@@ -174,9 +204,6 @@ open class LHWURLMatcher {
         case "int": value = Int(urlPathComponents[index]) // e.g. 123
         case "float": value = Float(urlPathComponents[index]) // e.g. 123.0
         case "path": value = urlPathComponents[index..<urlPathComponents.count].joined(separator: "/")
-        case "action":
-            value = urlPathComponents[index+1..<urlPathComponents.count].joined(separator: "/")
-            key = "action"
         default:
             if let customURLValueTypeHandler = customURLValueMatcherHandlers[type] {
                 value = customURLValueTypeHandler(urlPathComponents[index])
@@ -189,7 +216,12 @@ open class LHWURLMatcher {
         if let value = value {
             return (key, value)
         }
-        
         return nil
+    }
+    
+    func replaceRegex(_ pattern: String, _ repl: String, _ string: String) -> String {
+        guard let regex = try? NSRegularExpression(pattern: pattern, options: []) else { return string }
+        let range = NSMakeRange(0, string.characters.count)
+        return regex.stringByReplacingMatches(in: string, options: [], range: range, withTemplate: repl)
     }
 }

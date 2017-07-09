@@ -26,28 +26,29 @@
 // THE SOFTWARE.
 
 import Foundation
+import CoreGraphics
 
-public protocol LHWWatcher {
+public protocol LHWWatcher: class {
     var actionHandler: LHWHandler? { get }
     
     func actorCompleted(status: LHWActionStageStatus, path: String, result: Any?)
-    func actorReportedProgress(path: String, progress: Float)
+    func actorReportedProgress(path: String, progress: CGFloat)
     func actionStageResourceDispatched(path: String, resource: Any?, arguments: Any?)
-    func actionStageActionRequested(_ action: String, options: Dictionary<String, Any>?)
+    func actionStageActionRequested(_ action: String, options: [String: Any]?)
     func actorMessageReceived(path: String, messageType: String?, message: Any?)
 }
 
-extension LHWWatcher {
+public extension LHWWatcher {
     func actorCompleted(status: LHWActionStageStatus, path: String, result: Any?) {
     }
     
-    func actorReportedProgress(path: String, progress: Float) {
+    func actorReportedProgress(path: String, progress: CGFloat) {
     }
     
     func actionStageResourceDispatched(path: String, resource: Any?, arguments: Any?) {
     }
     
-    func actionStageActionRequested(_ action: String, options: Dictionary<String, Any>?) {
+    func actionStageActionRequested(_ action: String, options: [String: Any]?) {
     }
     
     func actorMessageReceived(path: String, messageType: String?, message: Any?) {

@@ -29,11 +29,11 @@ open class LHWActor {
     private static var registeredRequestActors = [String: LHWActor.Type]()
     
     open var path: String
-    open var requestQueueName: String? = nil
-    open var storedOptions: [String: Any]? = [String: Any]()
+    open var requestQueueName: String?
+    open var storedOptions: [String: Any]?
     open var requiresAuthorization: Bool = false
     open var cancelTimeout: TimeInterval
-    open var cancelToken: Any? = nil
+    open var cancelToken: Any?
     open var multipleCancelTokens = [Any]()
     open var cancelled: Bool = false
     
@@ -43,15 +43,16 @@ open class LHWActor {
     }
     
     // MARK: -
-    open class func registerActorClass(_ requestActorClass: LHWActor.Type) {
+    
+    public class func registerActorClass(_ requestActorClass: LHWActor.Type) {
         guard let genericPath = requestActorClass.genericPath() else {
-            print("Error: LHWActor.registerActorClass: genericPath is nil")
+            Logger.error("LHWActor.registerActorClass: genericPath is nil")
             return
         }
         registeredRequestActors[genericPath] = requestActorClass
     }
     
-    open class func requestActorForGenericPath(_ genericPath: String, path: String) -> LHWActor? {
+    public class func requestActorForGenericPath(_ genericPath: String, path: String) -> LHWActor? {
         let actorClass = registeredRequestActors[genericPath]
         if actorClass != nil {
             let actor = actorClass?.init(path: path)
@@ -62,11 +63,12 @@ open class LHWActor {
     }
     
     open class func genericPath() -> String? {
-        print("Error: LHWActor.genericPath: no default implementation provided")
+        Logger.error("LHWActor.genericPath: no default implementation provided")
         return nil
     }
     
     // MARK: -
+    
     open func prepare(options: [String: Any]?) {
     }
     

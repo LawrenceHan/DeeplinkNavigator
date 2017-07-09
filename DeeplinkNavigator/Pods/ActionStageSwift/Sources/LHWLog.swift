@@ -1,5 +1,6 @@
 //
-//  ActionStageSwift
+//  SwiftyBeaver.swift
+//  SwiftyBeaver
 //
 //  Created by Sebastian Kreutzberger on 05.12.15.
 //  Copyright © 2015 Sebastian Kreutzberger
@@ -90,7 +91,8 @@ private let LHWLogFileHandle: FileHandle? = {
 
 private var format = "$DHH:mm:ss.SSS$d $C$L$c $N.$F:$l - $M"
 
-open class LHWLog {
+public final class LHWLog {
+    
     // MARK: - Types
     
     private struct LevelString {
@@ -293,10 +295,9 @@ open class LHWLog {
     /// and for unit tests (nil if error)
     private func send(_ level: ActionStageSwift.Level, msg: String, file: String,
                       function: String, line: Int, logToFile: Bool = false) -> String? {
-        
+
         if format.hasPrefix("$J") {
             return messageToJSON(level, msg: msg, file: file, function: function, line: line)
-            
         } else {
             return formatMessage(format, level: level, msg: msg, file: file, function: function, line: line, logToFile: logToFile)
         }
@@ -505,7 +506,7 @@ open class LHWLog {
     /// returns boolean and is used to decide whether to resolve
     /// the message before invoking shouldLevelBeLogged
     private func hasMessageFilters() -> Bool {
-        return !getFiltersTargeting(LHWFilter.TargetType.Message(.Equals([], true)),
+        return !getFiltersTargeting(LHWFilter.TargetType.message(.equals([], true)),
                                     fromFilters: self.filters).isEmpty
     }
     
@@ -630,13 +631,13 @@ open class LHWLog {
             }
             
             switch filter.getTarget() {
-            case .Path(_):
+            case .path(_):
                 passes = filter.apply(path)
                 
-            case .Function(_):
+            case .function(_):
                 passes = filter.apply(function)
                 
-            case .Message(_):
+            case .message(_):
                 guard let message = message else {
                     return false
                 }
