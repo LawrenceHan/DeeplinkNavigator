@@ -1,30 +1,24 @@
-# DeeplinkNavigator
+DeeplinkNavigator
+============
 
-## Supported formats
+### Thanks for [devxoul](https://github.com/devxoul), this project is based & inspried on his effort.
 
-`UUID`: "myapp://\<UUID:uuid\>/" ||  "myapp://123e4567-e89b-12d3-a456-426655440000"
+![Swift](https://img.shields.io/badge/Swift-3.0-orange.svg)
 
-`string`: "myapp://\<string:greeting\>/" or "myapp://greeting/" *default is string* ||  "myapp://hello world/"
+DeeplinkNavigator can be used for mapping URL patterns with 2 kind of types: `DeeplinkNavigable` and `DeeplinkOpenHandler`. `DeeplinkNavigable` is a type which defines 3 initialization protocols: `StoryboardNavigable`, `XibNavigable`, `InitNavigable` (default init method for viewController). `DeeplinkOpenHandler` is a closure which can be executed. Both an initializer and a closure receive an URL and placeholder values.
 
-`int`: "myapp://\<int:uid\>/" || "myapp://12345/"
-
-`float`: "myapp://\<float:width\>/" || "myapp://480/"
-
-`path`: "https://\<path:website\>/" || "https://www.google.com/"
-
-`action`: "myapp://\<action:loadMoreContent\>/" || "myapp://action:userdetail/loadMoreContent/"
-
-## How to use
-
-Note: LHWURLConvertible is a protocol that URL and String conforms.
-Note: Global constant Navigator is a shortcut for LHWURLNavigator.default.
+Getting Started
+---------------
 
 #### 1. Mapping URL Patterns
 
-```
-Navigator.map("myapp://userdetail/\<int:uid\>", SomeViewController.self)
-Navigator.map("myapp://userdetail/\<title\>", SomeViewController.self) // default is string
-Navigator.map("myapp://userdetail/\<action:\_\>", SomeViewController.self) // _ means no placeholder for name
+URL patterns can contain placeholders. Placeholders will be replaced with matching values from URLs. Use `<` and `>` to make placeholders. Placeholders can have types: `string`(default), `int`, `float`, and `path`.
+
+Here's an example of mapping URL patterns with view controllers and a closure. View controllers should conform a protocol `DeeplinkNavigable` to be mapped with URL patterns. 
+
+```swift
+Navigator.map("myapp://user/<int:id>", UserViewController.self)
+Navigator.map("myapp://post/<title>", PostViewController.self)
 
 Navigator.map("myapp://alert") { url, values in
   print(url.queryParameters["title"])
@@ -33,45 +27,124 @@ Navigator.map("myapp://alert") { url, values in
 }
 ```
 
+> **Note**: Global constant `Navigator` is a shortcut for `DeeplinkNavigator.default`.
+
 #### 2. Pushing, Presenting and Opening URLs
 
-```
-Navigator.push("myapp://userdetail/123")
-Navigator.present("myapp://userdetail/54321", wrap: true)
-Navigator.push("myapp://userdetail/action:loadMoreContent/")
+DeeplinkNavigator can push and present view controllers and execute closures with URLs.
+
+Provide the `from` parameter to `push()` to specify the navigation controller which the new view controller will be pushed. Similarly, provide the `from` parameter to `present()` to specify the view controller which the new view controller will be presented. If the `nil` is passed, which is a default value, current application's top most view controller will be used to push or present view controllers.
+
+`present()` takes an extra parameter: `wrap`. If `true` is specified, the new view controller will be wrapped with a `UINavigationController`. Default value is `false`.
+
+```swift
+Navigator.push("myapp://user/123")
+Navigator.present("myapp://post/54321", wrap: true)
+
 Navigator.open("myapp://alert?title=Hello&message=World")
 ```
 
-#### 3. Implementing LHWURLNavigable protocol
+#### 3. Implementing DeeplinkNavigable
 
-```
-class TestViewController: UIViewController, LHWURLNavigable {
-    var initialAction: String?
-    
-    init() {
-        super.init(nibName: nil, bundle: nil)
+View controllers should conform a protocol `DeeplinkNavigable` to be mapped with URLs. A protocol `DeeplinkNavigable` defines 3 initialization protocols: `StoryboardNavigable`, `XibNavigable`, `InitNavigable` with parameter `navigation` which contains `url`, `values`, `mappingContext` and `navigationContext` as properties.
+
+Property `url` is an URL that is passed from `DeeplinkNavigator.push()` and `DeeplinkNavigator.present()`. Parameter `values` is a dictionary that contains URL placeholder keys and values. Parameter `mappingContext` is a context passed from a `map()` function. Parameter `navigationContext` is a dictionary which contains extra values passed from `push()` or `present()`.
+
+```swift
+final class StoryboardViewController: UIViewController {
+}
+
+extension StoryboardViewController: StoryboardNavigable {
+    static func viewControllerFromStoryBoard(navigation: DeeplinkNavigation) -> UIViewController? {
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: String(describing: self))
+        return vc
     }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+}
+
+final class XibViewController: UIViewController {
+}
+
+extension XibViewController: XibNavigable {
+    static func viewControllerFromXib(navigation: DeeplinkNavigation) -> UIViewController? {
+        let vc = XibViewController(nibName: String(describing: self), bundle: nil)
+        return vc
     }
-    
-    convenience required init?(url: LHWURLConvertible,
-                               values: [String: Any],
-                               queries: [URLQueryItem]?,
-                               userInfo: [AnyHashable: Any]?) {
+}
+
+final class InitViewController: UIViewController {
+}
+
+extension InitViewController: InitNavigable {
+    convenience init?(navigation: DeeplinkNavigation) {
         self.init()
-        if let action = values["action"] as? String {
-            initialAction = action
-        }
-        print("Received action: \(String(describing: initialAction)), queries: \(String(describing: queries))")
     }
 }
 ```
 
-## Handle open app event
+Installation
+------------
 
+[CocoaPods](https://cocoapods.org):
+
+    ```ruby
+    pod 'DeeplinkNavigator'
+    ```
+    
+
+Tips and Tricks
+---------------
+
+#### Where to Map URLs
+
+I'd prefer using separated URL map file.
+
+```swift
+struct NavigationMap {
+
+  static func initialize() {
+    Navigator.map("myapp://user/<int:id>", UserViewController.self)
+    Navigator.map("myapp://post/<title>", PostViewController.self)
+
+    Navigator.map("myapp://alert") { url, values in
+      print(url.queryParameters["title"])
+      print(url.queryParameters["message"])
+      self.someUtilityMethod()
+      return true
+    }
+  }
+
+  private static func someUtilityMethod() {
+    print("This method is really useful")
+  }
+
+}
 ```
+
+Then call `initialize()` at `AppDelegate`'s `application:didFinishLaunchingWithOptions:`.
+
+```swift
+@UIApplicationMain
+final class AppDelegate: UIResponder, UIApplicationDelegate {
+
+  func application(
+    _ application: UIApplication,
+    didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?
+  ) -> Bool {
+    // Navigator
+    URLNavigationMap.initialize()
+    
+    // Do something else...
+  }
+}
+```
+
+
+#### Implementing AppDelegate Launch Option URL
+
+It's available to open your app with URLs if custom schemes are registered. In order to navigate to view controllers with URLs, you'll have to implement `application:didFinishLaunchingWithOptions:` method.
+
+```swift
 func application(
   _ application: UIApplication,
   didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?
@@ -85,4 +158,81 @@ func application(
   }
   return true
 }
+
 ```
+
+
+#### Implementing AppDelegate Open URL Method
+
+You'll might want to implement custom URL open handler. Here's an example of using URLNavigator with other URL open handlers.
+
+```swift
+func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+  // If you're using Facebook SDK
+  let fb = FBSDKApplicationDelegate.sharedInstance()
+  if fb.application(application, open: url, sourceApplication: sourceApplication, annotation: annotation) {
+    return true
+  }
+
+  // URLNavigator Handler
+  if Navigator.open(url) {
+    return true
+  }
+
+  // URLNavigator View Controller
+  if Navigator.present(url, wrap: true) != nil {
+    return true
+  }
+
+  return false
+}
+```
+
+#### Setting Default Scheme
+
+Set `scheme` property on `URLNavigator` instance to get rid of schemes in every URLs.
+
+```swift
+Navigator.scheme = "myapp"
+Navigator.map("/user/<int:id>", UserViewController.self)
+Navigator.push("/user/10")
+```
+
+This is totally equivalent to:
+
+```swift
+Navigator.map("myapp://user/<int:id>", UserViewController.self)
+Navigator.push("myapp://user/10")
+```
+
+Setting `scheme` property will not affect other URLs that already have schemes.
+
+```swift
+Navigator.scheme = "myapp"
+Navigator.map("/user/<int:id>", UserViewController.self) // `myapp://user/<int:id>`
+Navigator.map("http://<path>", MyWebViewController.self) // `http://<path>`
+```
+
+#### Passing Context when Mapping
+
+```swift
+let context = Foo()
+Navigator.map("myapp://user/10", UserViewController.self, context: context)
+```
+
+
+#### Passing Extra Values when Pushing or Presenting
+
+```swift
+let context: [AnyHashable: Any] = [
+  "fromViewController": self
+]
+Navigator.push("myapp://user/10", context: context)
+Navigator.present("myapp://user/10", context: context)
+```
+
+
+License
+-------
+
+DeeplinkNavigator is under MIT license. See the [LICENSE](LICENSE) file for more info.
