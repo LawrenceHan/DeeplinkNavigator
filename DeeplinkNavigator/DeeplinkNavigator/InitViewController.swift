@@ -16,7 +16,7 @@ final class InitViewController: UIViewController, Titlable {
 }
 
 extension InitViewController: InitNavigable {
-    convenience init?(navigation: LHWNavigation) {
+    convenience init?(navigation: DeeplinkNavigation) {
         print(navigation)
         self.init()
     }

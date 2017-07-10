@@ -20,7 +20,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 //
-//  LHWNavigator.swift
+//  DeeplinkNavigator.swift
 //  DeeplinkNavigator
 //
 //  Created by Hanguang on 14/03/2017.
@@ -29,10 +29,10 @@
 
 import UIKit
 
-/// LHWURLNavigator provides an elegant way to navigate through view controllers by URLs. URLs should be mapped by using
-/// `LHWURLNavigator.map(_:_:)` function.
+/// DeeplinkNavigator provides an elegant way to navigate through view controllers by URLs. URLs should be mapped by using
+/// `DeeplinkNavigator.map(_:_:)` function.
 ///
-/// LHWURLNavigator can be used to map URLs with 2 kind of types: `LHWURLNavigable` and `URLOpenHandler`. `LHWURLNavigable` is
+/// DeeplinkNavigator can be used to map URLs with 2 kind of types: `DeeplinkNavigable` and `URLOpenHandler`. `DeeplinkNavigable` is
 /// a type which defines an custom initializer and `URLOpenHandler` is a closure. Both an initializer and a closure
 /// have URL and values for its parameters.
 ///
@@ -55,17 +55,17 @@ import UIKit
 ///       return true
 ///     }
 ///
-/// Use `LHWURLNavigator.openURL()` to execute closures.
+/// Use `DeeplinkNavigator.openURL()` to execute closures.
 ///
 ///     Navigator.openURL("myapp://say-hello") // prints "Hello, world!"
 ///
 /// - note: Use `UIApplication.openURL()` method to launch other applications or to open URLs in application level.
 ///
-/// - seealso: `LHWURLNavigable`
-open class LHWURLNavigator {
+/// - seealso: `DeeplinkNavigable`
+open class DeeplinkNavigator {
     
     struct URLMapItem {
-        let navigable: LHWURLNavigable.Type
+        let navigable: DeeplinkNavigable.Type
         let mappingContext: MappingContext?
     }
     
@@ -99,10 +99,10 @@ open class LHWURLNavigator {
     
     // MARK: Singleton
     
-    /// Returns a default navigator. A global constant `Navigator` is a shortcut of `LHWURLNavigator.default`.
+    /// Returns a default navigator. A global constant `Navigator` is a shortcut of `DeeplinkNavigator.default`.
     ///
     /// - seealso: `Navigator`
-    open static let `default` = LHWURLNavigator()
+    open static let `default` = DeeplinkNavigator()
     
     
     // MARK: Initializing
@@ -113,8 +113,8 @@ open class LHWURLNavigator {
     
     // MARK: URL Mapping
     
-    /// Map an `LHWURLNavigable` to an URL pattern.
-    open func map(_ urlPattern: LHWURLConvertible, _ navigable: LHWURLNavigable.Type, context: MappingContext? = nil) {
+    /// Map an `DeeplinkNavigable` to an URL pattern.
+    open func map(_ urlPattern: LHWURLConvertible, _ navigable: DeeplinkNavigable.Type, context: MappingContext? = nil) {
         let URLString = LHWURLMatcher.default.normalized(urlPattern, scheme: self.scheme).urlStringValue
         self.urlMap[URLString] = URLMapItem(navigable: navigable, mappingContext: context)
     }
@@ -133,7 +133,7 @@ open class LHWURLNavigator {
     open func viewController(for url: LHWURLConvertible, context: NavigationContext? = nil) -> UIViewController? {
         if let urlMatchComponents = LHWURLMatcher.default.match(url, scheme: self.scheme, from: Array(self.urlMap.keys)) {
             guard let item = self.urlMap[urlMatchComponents.pattern] else { return nil }
-            let navigation = LHWNavigation(
+            let navigation = DeeplinkNavigation(
                 url: url,
                 values: urlMatchComponents.values,
                 mappingContext: item.mappingContext,
@@ -298,5 +298,5 @@ open class LHWURLNavigator {
 
 // MARK: - Default Navigator
 
-public let Navigator = LHWURLNavigator.default
+public let Navigator = DeeplinkNavigator.default
 

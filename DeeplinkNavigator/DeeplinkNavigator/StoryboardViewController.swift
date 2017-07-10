@@ -16,7 +16,7 @@ final class StoryboardViewController: UIViewController, Titlable {
 }
 
 extension StoryboardViewController: StoryboardNavigable {
-    static func viewControllerFromStoryBoard(navigation: LHWNavigation) -> UIViewController? {
+    static func viewControllerFromStoryBoard(navigation: DeeplinkNavigation) -> UIViewController? {
         let sb = UIStoryboard(name: "Main", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: String(describing: self))
         return vc

@@ -1,5 +1,5 @@
 //
-//  LHWNavigation.swift
+//  DeeplinkNavigation.swift
 //  URLNavigator
 //
 //  Created by Suyeol Jeon on 19/04/2017.
@@ -7,7 +7,7 @@
 //
 
 //
-//  LHWNavigation.swift
+//  DeeplinkNavigation.swift
 //  DeeplinkNavigator
 //
 //  Created by Hanguang on 2017/7/9.
@@ -19,7 +19,7 @@ import Foundation
 public typealias MappingContext = Any
 public typealias NavigationContext = Any
 
-public struct LHWNavigation {
+public struct DeeplinkNavigation {
     /// The URL which is used to create an instance.
     public let url: LHWURLConvertible
     

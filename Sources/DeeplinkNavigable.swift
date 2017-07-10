@@ -20,7 +20,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 //
-//  LHWURLNavigable.swift
+//  DeeplinkNavigable.swift
 //  DeeplinkNavigator
 //
 //  Created by Hanguang on 14/03/2017.
@@ -31,14 +31,14 @@ import UIKit
 
 /// A type that can be initialized with URLs and values.
 ///
-/// - seealso: `LHWURLNavigator`
-public protocol LHWURLNavigable {
-    /// Creates an instance with specified LHWNavigation and returns it. Returns `nil` if the LHWNavigation
+/// - seealso: `DeeplinkNavigator`
+public protocol DeeplinkNavigable {
+    /// Creates an instance with specified DeeplinkNavigation and returns it. Returns `nil` if the DeeplinkNavigation
     /// and the values are not met the condition to create an instance.
     ///
     /// For example, to validate whether a value of `id` is an `Int`:
     ///
-    ///     convenience init?(navigation: LHWNavigation) {
+    ///     convenience init?(navigation: DeeplinkNavigation) {
     ///       guard let id = navigation.values["id"] as? Int else {
     ///         return nil
     ///       }
@@ -48,44 +48,44 @@ public protocol LHWURLNavigable {
     /// Do not call this initializer directly. It is recommended to use with `URLNavigator`.
     ///
     /// - parameter navigation: The navigation information that contains url, values and context.
-    init?(navigation: LHWNavigation)
+    init?(navigation: DeeplinkNavigation)
     
     
-    /// Creates an instance with specified LHWNavigation and returns it. Returns `nil` if the LHWNavigation
+    /// Creates an instance with specified DeeplinkNavigation and returns it. Returns `nil` if the DeeplinkNavigation
     /// and the values are not met the condition to create an instance.
     ///
     /// - Returns: A UIViewController from a Storyboard
-    static func viewControllerFromStoryBoard(navigation: LHWNavigation) -> UIViewController?
+    static func viewControllerFromStoryBoard(navigation: DeeplinkNavigation) -> UIViewController?
     
-    /// Creates an instance with specified LHWNavigation and returns it. Returns `nil` if the LHWNavigation
+    /// Creates an instance with specified DeeplinkNavigation and returns it. Returns `nil` if the DeeplinkNavigation
     /// and the values are not met the condition to create an instance.
     ///
     /// - Returns: A UIViewController from an Xib
-    static func viewControllerFromXib(navigation: LHWNavigation) -> UIViewController?
+    static func viewControllerFromXib(navigation: DeeplinkNavigation) -> UIViewController?
 }
 
-public extension LHWURLNavigable {
-    init?(navigation: LHWNavigation) {
+public extension DeeplinkNavigable {
+    init?(navigation: DeeplinkNavigation) {
         return nil
     }
     
-    static func viewControllerFromStoryBoard(navigation: LHWNavigation) -> UIViewController? {
+    static func viewControllerFromStoryBoard(navigation: DeeplinkNavigation) -> UIViewController? {
         return nil
     }
     
-    static func viewControllerFromXib(navigation: LHWNavigation) -> UIViewController? {
+    static func viewControllerFromXib(navigation: DeeplinkNavigation) -> UIViewController? {
         return nil
     }
 }
 
-public protocol StoryboardNavigable: LHWURLNavigable {
-    static func viewControllerFromStoryBoard(navigation: LHWNavigation) -> UIViewController?
+public protocol StoryboardNavigable: DeeplinkNavigable {
+    static func viewControllerFromStoryBoard(navigation: DeeplinkNavigation) -> UIViewController?
 }
 
-public protocol XibNavigable: LHWURLNavigable {
-    static func viewControllerFromXib(navigation: LHWNavigation) -> UIViewController?
+public protocol XibNavigable: DeeplinkNavigable {
+    static func viewControllerFromXib(navigation: DeeplinkNavigation) -> UIViewController?
 }
 
-public protocol InitNavigable: LHWURLNavigable {
-    init?(navigation: LHWNavigation)
+public protocol InitNavigable: DeeplinkNavigable {
+    init?(navigation: DeeplinkNavigation)
 }
