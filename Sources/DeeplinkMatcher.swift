@@ -1,5 +1,5 @@
 //
-//  LHWURLMatcher.swift
+//  DeeplinkMatcher.swift
 //  URLNavigator
 //
 //  Created by Sklar, Josh on 9/2/16.
@@ -24,7 +24,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 //
-//  LHWURLMatcher.swift
+//  DeeplinkMatcher.swift
 //  DeeplinkNavigator
 //
 //  Created by Hanguang on 14/03/2017.
@@ -43,10 +43,10 @@ public struct LHWURLMatchComponents {
     public let values: [String: Any]
 }
 
-/// LHWURLMatcher provides a way to match URLs against a list of specified patterns.
+/// DeeplinkMatcher provides a way to match URLs against a list of specified patterns.
 ///
-/// LHWURLMatcher extracts the pattern and the values from the URL if possible.
-open class LHWURLMatcher {
+/// DeeplinkMatcher extracts the pattern and the values from the URL if possible.
+open class DeeplinkMatcher {
     
     /// A closure type which matches a URL value string to a typed value.
     public typealias URLValueMatcherHandler = (String) -> Any?
@@ -57,7 +57,7 @@ open class LHWURLMatcher {
     
     // MARK: Singleton
     
-    open static let `default` = LHWURLMatcher()
+    open static let `default` = DeeplinkMatcher()
     
 
     // MARK: Initialization
@@ -83,7 +83,7 @@ open class LHWURLMatcher {
     ///
     /// - returns: A `LHWURLMatchComponents` struct that holds the URL pattern string, a dictionary of URL placeholder
     ///            values, and any query items.
-    open func match(_ url: LHWURLConvertible, scheme: String? = nil, from urlPatterns: [String]) -> LHWURLMatchComponents? {
+    open func match(_ url: DeeplinkConvertible, scheme: String? = nil, from urlPatterns: [String]) -> LHWURLMatchComponents? {
         let normalizedURLString = self.normalized(url, scheme: scheme).urlStringValue
         let urlPathComponents = normalizedURLString.components(separatedBy: "/") // e.g. ["myapp:", "user", "123"]
         
@@ -140,8 +140,8 @@ open class LHWURLMatcher {
         self.customURLValueMatcherHandlers[valueType] = handler
     }
     
-    /// Returns an scheme-appended `LHWURLConvertible` if given `url` doesn't have its scheme.
-    func url(withScheme scheme: String?, _ url: LHWURLConvertible) -> LHWURLConvertible {
+    /// Returns an scheme-appended `DeeplinkConvertible` if given `url` doesn't have its scheme.
+    func url(withScheme scheme: String?, _ url: DeeplinkConvertible) -> DeeplinkConvertible {
         let urlString = url.urlStringValue
         if let scheme = scheme, !urlString.contains("://") {
             #if DEBUG
@@ -165,7 +165,7 @@ open class LHWURLMatcher {
     /// - parameter dirtyURL: The dirty URL to be normalized.
     ///
     /// - returns: The normalized URL. Returns `nil` if the pecified URL is invalid.
-    func normalized(_ dirtyURL: LHWURLConvertible, scheme: String? = nil) -> LHWURLConvertible {
+    func normalized(_ dirtyURL: DeeplinkConvertible, scheme: String? = nil) -> DeeplinkConvertible {
         guard dirtyURL.urlValue != nil else {
             return dirtyURL
         }

@@ -21,7 +21,7 @@ public typealias NavigationContext = Any
 
 public struct DeeplinkNavigation {
     /// The URL which is used to create an instance.
-    public let url: LHWURLConvertible
+    public let url: DeeplinkConvertible
     
     /// The URL pattern placeholder values by placeholder names. For example, if the URL pattern is
     /// `myapp://user/<int:id>` and the given URL is `myapp://user/123`, values will be `["id": 123]`.

@@ -46,7 +46,7 @@ class MainViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        Navigator.push("navigator://\(items[indexPath.row])")
+        Navigator.push("navigator://\(items[indexPath.row])", context: ["fromViewController": self], animated: true)
     }
 
 }

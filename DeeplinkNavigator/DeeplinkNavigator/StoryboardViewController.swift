@@ -11,12 +11,12 @@ import UIKit
 final class StoryboardViewController: UIViewController, Titlable {
     override func viewDidLoad() {
         title = identifier
-        view.backgroundColor = UIColor.red
     }
 }
 
 extension StoryboardViewController: StoryboardNavigable {
     static func viewControllerFromStoryBoard(navigation: DeeplinkNavigation) -> UIViewController? {
+        print(navigation)
         let sb = UIStoryboard(name: "Main", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: String(describing: self))
         return vc

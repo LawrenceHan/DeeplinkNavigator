@@ -70,7 +70,7 @@ open class DeeplinkNavigator {
     }
     
     /// A closure type which has URL and values for parameters.
-    public typealias URLOpenHandler = (_ url: LHWURLConvertible, _ values: [String: Any]) -> Bool
+    public typealias URLOpenHandler = (_ url: DeeplinkConvertible, _ values: [String: Any]) -> Bool
     
     /// A dictionary to store URLNaviables by URL patterns.
     private(set) var urlMap = [String: URLMapItem]()
@@ -114,14 +114,14 @@ open class DeeplinkNavigator {
     // MARK: URL Mapping
     
     /// Map an `DeeplinkNavigable` to an URL pattern.
-    open func map(_ urlPattern: LHWURLConvertible, _ navigable: DeeplinkNavigable.Type, context: MappingContext? = nil) {
-        let URLString = LHWURLMatcher.default.normalized(urlPattern, scheme: self.scheme).urlStringValue
+    open func map(_ urlPattern: DeeplinkConvertible, _ navigable: DeeplinkNavigable.Type, context: MappingContext? = nil) {
+        let URLString = DeeplinkMatcher.default.normalized(urlPattern, scheme: self.scheme).urlStringValue
         self.urlMap[URLString] = URLMapItem(navigable: navigable, mappingContext: context)
     }
     
     /// Map an `URLOpenHandler` to an URL pattern.
-    open func map(_ urlPattern: LHWURLConvertible, _ handler: @escaping URLOpenHandler) {
-        let URLString = LHWURLMatcher.default.normalized(urlPattern, scheme: self.scheme).urlStringValue
+    open func map(_ urlPattern: DeeplinkConvertible, _ handler: @escaping URLOpenHandler) {
+        let URLString = DeeplinkMatcher.default.normalized(urlPattern, scheme: self.scheme).urlStringValue
         self.urlOpenHandlers[URLString] = handler
     }
     
@@ -130,8 +130,8 @@ open class DeeplinkNavigator {
     /// - parameter url: The URL to find view controllers.
     /// - parameter context: The user extra parameters you want add.
     /// - returns: A match view controller or `nil` if not matched.
-    open func viewController(for url: LHWURLConvertible, context: NavigationContext? = nil) -> UIViewController? {
-        if let urlMatchComponents = LHWURLMatcher.default.match(url, scheme: self.scheme, from: Array(self.urlMap.keys)) {
+    open func viewController(for url: DeeplinkConvertible, context: NavigationContext? = nil) -> UIViewController? {
+        if let urlMatchComponents = DeeplinkMatcher.default.match(url, scheme: self.scheme, from: Array(self.urlMap.keys)) {
             guard let item = self.urlMap[urlMatchComponents.pattern] else { return nil }
             let navigation = DeeplinkNavigation(
                 url: url,
@@ -174,7 +174,7 @@ open class DeeplinkNavigator {
     ///            a view controller.
     @discardableResult
     open func push(
-        _ url: LHWURLConvertible,
+        _ url: DeeplinkConvertible,
         context: NavigationContext? = nil,
         from: UINavigationController? = nil,
         animated: Bool = true
@@ -233,7 +233,7 @@ open class DeeplinkNavigator {
     ///     present a view controller.
     @discardableResult
     open func present(
-        _ url: LHWURLConvertible,
+        _ url: DeeplinkConvertible,
         context: NavigationContext? = nil,
         wrap: Bool = false,
         from: UIViewController? = nil,
@@ -283,9 +283,9 @@ open class DeeplinkNavigator {
     ///
     /// - returns: The return value of the matching `URLOpenHandler`. Returns `false` if there's no match.
     @discardableResult
-    open func open(_ url: LHWURLConvertible) -> Bool {
+    open func open(_ url: DeeplinkConvertible) -> Bool {
         let urlOpenHandlersKeys = Array(self.urlOpenHandlers.keys)
-        if let urlMatchComponents = LHWURLMatcher.default.match(url, scheme: self.scheme, from: urlOpenHandlersKeys) {
+        if let urlMatchComponents = DeeplinkMatcher.default.match(url, scheme: self.scheme, from: urlOpenHandlersKeys) {
             let handler = self.urlOpenHandlers[urlMatchComponents.pattern]
             if handler?(url, urlMatchComponents.values) == true {
                 return true

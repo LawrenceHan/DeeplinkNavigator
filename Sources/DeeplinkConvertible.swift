@@ -21,7 +21,7 @@
 // SOFTWARE.
 
 //
-//  LHWURLConvertible.swift
+//  DeeplinkConvertible.swift
 //  DeeplinkNavigator
 //
 //  Created by Hanguang on 13/03/2017.
@@ -31,7 +31,7 @@
 import Foundation
 
 /// A type which can be converted to URL string.
-public protocol LHWURLConvertible {
+public protocol DeeplinkConvertible {
     var urlValue: URL? { get }
     var urlStringValue: String { get }
     
@@ -48,7 +48,7 @@ public protocol LHWURLConvertible {
     var queryItems: [URLQueryItem]? { get }
 }
 
-extension LHWURLConvertible {
+extension DeeplinkConvertible {
     public var queryParameters: [String: String] {
         var parameters = [String: String]()
         self.urlValue?.query?.components(separatedBy: "&").forEach {
@@ -69,7 +69,7 @@ extension LHWURLConvertible {
     }
 }
 
-extension String: LHWURLConvertible {
+extension String: DeeplinkConvertible {
     public var urlValue: URL? {
         if let url = URL(string: self) {
             return url
@@ -87,7 +87,7 @@ extension String: LHWURLConvertible {
     }
 }
 
-extension URL: LHWURLConvertible {
+extension URL: DeeplinkConvertible {
     public var urlValue: URL? {
         return self
     }

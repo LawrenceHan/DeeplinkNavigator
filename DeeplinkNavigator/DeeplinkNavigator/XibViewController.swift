@@ -11,12 +11,12 @@ import UIKit
 final class XibViewController: UIViewController, Titlable {
     override func viewDidLoad() {
         title = identifier
-        view.backgroundColor = UIColor.green
     }
 }
 
 extension XibViewController: XibNavigable {
     static func viewControllerFromXib(navigation: DeeplinkNavigation) -> UIViewController? {
+        print(navigation)
         let vc = XibViewController(nibName: String(describing: self), bundle: nil)
         return vc
     }

@@ -13,8 +13,8 @@
 		020A7EB71F127C1A00C16785 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020A7EB61F127C1900C16785 /* MainViewController.swift */; };
 		020A7EB91F1285C900C16785 /* Titlable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020A7EB81F1285C900C16785 /* Titlable.swift */; };
 		028BD6D71E8A934C000F43E7 /* DeeplinkNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028BD6D21E8A934C000F43E7 /* DeeplinkNavigator.swift */; };
-		028BD6D81E8A934C000F43E7 /* LHWURLConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028BD6D31E8A934C000F43E7 /* LHWURLConvertible.swift */; };
-		028BD6D91E8A934C000F43E7 /* LHWURLMatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028BD6D41E8A934C000F43E7 /* LHWURLMatcher.swift */; };
+		028BD6D81E8A934C000F43E7 /* DeeplinkConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028BD6D31E8A934C000F43E7 /* DeeplinkConvertible.swift */; };
+		028BD6D91E8A934C000F43E7 /* DeeplinkMatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028BD6D41E8A934C000F43E7 /* DeeplinkMatcher.swift */; };
 		028BD6DA1E8A934C000F43E7 /* DeeplinkNavigable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028BD6D51E8A934C000F43E7 /* DeeplinkNavigable.swift */; };
 		028BD6DB1E8A934C000F43E7 /* UIViewController+TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028BD6D61E8A934C000F43E7 /* UIViewController+TopViewController.swift */; };
 		02E0B7541E7662AD00A6845D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E0B7531E7662AD00A6845D /* AppDelegate.swift */; };
@@ -44,8 +44,8 @@
 		020A7EB61F127C1900C16785 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		020A7EB81F1285C900C16785 /* Titlable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Titlable.swift; sourceTree = "<group>"; };
 		028BD6D21E8A934C000F43E7 /* DeeplinkNavigator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = DeeplinkNavigator.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		028BD6D31E8A934C000F43E7 /* LHWURLConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = LHWURLConvertible.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		028BD6D41E8A934C000F43E7 /* LHWURLMatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = LHWURLMatcher.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		028BD6D31E8A934C000F43E7 /* DeeplinkConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = DeeplinkConvertible.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		028BD6D41E8A934C000F43E7 /* DeeplinkMatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = DeeplinkMatcher.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		028BD6D51E8A934C000F43E7 /* DeeplinkNavigable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = DeeplinkNavigable.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		028BD6D61E8A934C000F43E7 /* UIViewController+TopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "UIViewController+TopViewController.swift"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		02E0B7501E7662AD00A6845D /* DeeplinkNavigator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeeplinkNavigator.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -89,8 +89,8 @@
 				028BD6D21E8A934C000F43E7 /* DeeplinkNavigator.swift */,
 				028BD6D51E8A934C000F43E7 /* DeeplinkNavigable.swift */,
 				020A7EAE1F1265F800C16785 /* DeeplinkNavigation.swift */,
-				028BD6D31E8A934C000F43E7 /* LHWURLConvertible.swift */,
-				028BD6D41E8A934C000F43E7 /* LHWURLMatcher.swift */,
+				028BD6D41E8A934C000F43E7 /* DeeplinkMatcher.swift */,
+				028BD6D31E8A934C000F43E7 /* DeeplinkConvertible.swift */,
 				028BD6D61E8A934C000F43E7 /* UIViewController+TopViewController.swift */,
 			);
 			name = Sources;
@@ -323,13 +323,13 @@
 				020A7EB71F127C1A00C16785 /* MainViewController.swift in Sources */,
 				02E0B7561E7662AD00A6845D /* StoryboardViewController.swift in Sources */,
 				02E0B7911E77BC4500A6845D /* InitViewController.swift in Sources */,
-				028BD6D91E8A934C000F43E7 /* LHWURLMatcher.swift in Sources */,
+				028BD6D91E8A934C000F43E7 /* DeeplinkMatcher.swift in Sources */,
 				02E0B7541E7662AD00A6845D /* AppDelegate.swift in Sources */,
 				020A7EB91F1285C900C16785 /* Titlable.swift in Sources */,
 				020A7EAF1F1265F800C16785 /* DeeplinkNavigation.swift in Sources */,
 				028BD6D71E8A934C000F43E7 /* DeeplinkNavigator.swift in Sources */,
 				028BD6DB1E8A934C000F43E7 /* UIViewController+TopViewController.swift in Sources */,
-				028BD6D81E8A934C000F43E7 /* LHWURLConvertible.swift in Sources */,
+				028BD6D81E8A934C000F43E7 /* DeeplinkConvertible.swift in Sources */,
 				028BD6DA1E8A934C000F43E7 /* DeeplinkNavigable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -34,5 +34,18 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>navigator</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>navigator</string>
+			</array>
+		</dict>
+	</array>
 </dict>
 </plist>
