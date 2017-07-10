@@ -5,7 +5,7 @@ DeeplinkNavigator
 
 ![Swift](https://img.shields.io/badge/Swift-3.0-orange.svg)
 
-DeeplinkNavigator can be used for mapping URL patterns with 2 kind of types: `DeeplinkNavigable` and `DeeplinkOpenHandler`. `DeeplinkNavigable` is a type which defines 3 initialization protocols: `StoryboardNavigable`, `XibNavigable`, `InitNavigable` (default init method for viewController). `DeeplinkOpenHandler` is a closure which can be executed. Both an initializer and a closure receive an URL and placeholder values.
+DeeplinkNavigator can be used for mapping URL patterns with 2 kind of types: `DeeplinkNavigable` and `DeeplinkOpenHandler`. `DeeplinkNavigable` is a protocol which has 3 sub-protocols: `StoryboardNavigable`, `XibNavigable`, `InitNavigable` (default init method for viewController). `DeeplinkOpenHandler` is a closure which can be executed. Both an initializer and a closure receive an URL and placeholder values.
 
 Getting Started
 ---------------
@@ -164,7 +164,7 @@ func application(
 
 #### Implementing AppDelegate Open URL Method
 
-You'll might want to implement custom URL open handler. Here's an example of using URLNavigator with other URL open handlers.
+You'll might want to implement custom URL open handler. Here's an example of using DeeplinkNavigator with other URL open handlers.
 
 ```swift
 func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
@@ -174,12 +174,12 @@ func application(_ application: UIApplication, open url: URL, sourceApplication:
     return true
   }
 
-  // URLNavigator Handler
+  // DeeplinkNavigator Handler
   if Navigator.open(url) {
     return true
   }
 
-  // URLNavigator View Controller
+  // DeeplinkNavigator View Controller
   if Navigator.present(url, wrap: true) != nil {
     return true
   }
@@ -190,7 +190,7 @@ func application(_ application: UIApplication, open url: URL, sourceApplication:
 
 #### Setting Default Scheme
 
-Set `scheme` property on `URLNavigator` instance to get rid of schemes in every URLs.
+Set `scheme` property on `DeeplinkNavigator` instance to get rid of schemes in every URLs.
 
 ```swift
 Navigator.scheme = "myapp"
