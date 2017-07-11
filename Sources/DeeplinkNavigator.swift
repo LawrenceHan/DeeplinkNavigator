@@ -32,8 +32,8 @@ import UIKit
 /// DeeplinkNavigator provides an elegant way to navigate through view controllers by URLs. URLs should be mapped by using
 /// `DeeplinkNavigator.map(_:_:)` function.
 ///
-/// DeeplinkNavigator can be used to map URLs with 2 kind of types: `DeeplinkNavigable` and `URLOpenHandler`. `DeeplinkNavigable` is
-/// a type which defines an custom initializer and `URLOpenHandler` is a closure. Both an initializer and a closure
+/// DeeplinkNavigator can be used to map URLs with 2 kind of types: `DeeplinkNavigable` and `DeeplinkOpenHandler`. `DeeplinkNavigable` is
+/// a type which defines an custom initializer and `DeeplinkOpenHandler` is a closure. Both an initializer and a closure
 /// have URL and values for its parameters.
 ///
 /// URLs can have
@@ -48,7 +48,7 @@ import UIKit
 ///     Navigator.push("myapp://user/123")
 ///     Navigator.present("http://xoul.kr")
 ///
-/// This is another example of mapping `URLOpenHandler` to URL:
+/// This is another example of mapping `DeeplinkOpenHandler` to URL:
 ///
 ///     Navigator.map("myapp://say-hello") { URL, values in
 ///       print("Hello, world!")
@@ -64,19 +64,19 @@ import UIKit
 /// - seealso: `DeeplinkNavigable`
 open class DeeplinkNavigator {
     
-    struct URLMapItem {
+    struct DeeplinkMapItem {
         let navigable: DeeplinkNavigable.Type
         let mappingContext: MappingContext?
     }
     
     /// A closure type which has URL and values for parameters.
-    public typealias URLOpenHandler = (_ url: DeeplinkConvertible, _ values: [String: Any]) -> Bool
+    public typealias DeeplinkOpenHandler = (_ url: DeeplinkConvertible, _ values: [String: Any]) -> Bool
     
-    /// A dictionary to store URLNaviables by URL patterns.
-    private(set) var urlMap = [String: URLMapItem]()
+    /// A dictionary to store DeeplinkNaviables by URL patterns.
+    private(set) var urlMap = [String: DeeplinkMapItem]()
     
-    /// A dictionary to store URLOpenHandlers by URL patterns.
-    private(set) var urlOpenHandlers = [String: URLOpenHandler]()
+    /// A dictionary to store DeeplinkOpenHandlers by URL patterns.
+    private(set) var deeplinkOpenHandlers = [String: DeeplinkOpenHandler]()
     
     /// A default scheme. If this value is set, it's available to map URL paths without schemes.
     ///
@@ -116,13 +116,13 @@ open class DeeplinkNavigator {
     /// Map an `DeeplinkNavigable` to an URL pattern.
     open func map(_ urlPattern: DeeplinkConvertible, _ navigable: DeeplinkNavigable.Type, context: MappingContext? = nil) {
         let URLString = DeeplinkMatcher.default.normalized(urlPattern, scheme: self.scheme).urlStringValue
-        self.urlMap[URLString] = URLMapItem(navigable: navigable, mappingContext: context)
+        self.urlMap[URLString] = DeeplinkMapItem(navigable: navigable, mappingContext: context)
     }
     
-    /// Map an `URLOpenHandler` to an URL pattern.
-    open func map(_ urlPattern: DeeplinkConvertible, _ handler: @escaping URLOpenHandler) {
+    /// Map an `DeeplinkOpenHandler` to an URL pattern.
+    open func map(_ urlPattern: DeeplinkConvertible, _ handler: @escaping DeeplinkOpenHandler) {
         let URLString = DeeplinkMatcher.default.normalized(urlPattern, scheme: self.scheme).urlStringValue
-        self.urlOpenHandlers[URLString] = handler
+        self.deeplinkOpenHandlers[URLString] = handler
     }
     
     /// Returns a matched view controller from a specified URL.
@@ -277,16 +277,16 @@ open class DeeplinkNavigator {
     
     // MARK: Opening URL
     
-    /// Executes the registered `URLOpenHandler`.
+    /// Executes the registered `DeeplinkOpenHandler`.
     ///
-    /// - parameter url: The URL to find `URLOpenHandler`s.
+    /// - parameter url: The URL to find `DeeplinkOpenHandler`s.
     ///
-    /// - returns: The return value of the matching `URLOpenHandler`. Returns `false` if there's no match.
+    /// - returns: The return value of the matching `DeeplinkOpenHandler`. Returns `false` if there's no match.
     @discardableResult
     open func open(_ url: DeeplinkConvertible) -> Bool {
-        let urlOpenHandlersKeys = Array(self.urlOpenHandlers.keys)
-        if let urlMatchComponents = DeeplinkMatcher.default.match(url, scheme: self.scheme, from: urlOpenHandlersKeys) {
-            let handler = self.urlOpenHandlers[urlMatchComponents.pattern]
+        let deeplinkOpenHandlersKeys = Array(self.deeplinkOpenHandlers.keys)
+        if let urlMatchComponents = DeeplinkMatcher.default.match(url, scheme: self.scheme, from: deeplinkOpenHandlersKeys) {
+            let handler = self.deeplinkOpenHandlers[urlMatchComponents.pattern]
             if handler?(url, urlMatchComponents.values) == true {
                 return true
             }

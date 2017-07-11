@@ -12,6 +12,9 @@
 		020A7EB31F127B5100C16785 /* XibViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 020A7EB11F127B5100C16785 /* XibViewController.xib */; };
 		020A7EB71F127C1A00C16785 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020A7EB61F127C1900C16785 /* MainViewController.swift */; };
 		020A7EB91F1285C900C16785 /* Titlable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020A7EB81F1285C900C16785 /* Titlable.swift */; };
+		02384B301F14A1CA00C1537A /* DeeplinkNavigator+Extenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02384B2F1F14A1CA00C1537A /* DeeplinkNavigator+Extenstion.swift */; };
+		02384B321F14C91800C1537A /* PushOrPopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02384B311F14C91800C1537A /* PushOrPopViewController.swift */; };
+		02384B341F14D12E00C1537A /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02384B331F14D12E00C1537A /* TestViewController.swift */; };
 		028BD6D71E8A934C000F43E7 /* DeeplinkNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028BD6D21E8A934C000F43E7 /* DeeplinkNavigator.swift */; };
 		028BD6D81E8A934C000F43E7 /* DeeplinkConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028BD6D31E8A934C000F43E7 /* DeeplinkConvertible.swift */; };
 		028BD6D91E8A934C000F43E7 /* DeeplinkMatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028BD6D41E8A934C000F43E7 /* DeeplinkMatcher.swift */; };
@@ -43,6 +46,9 @@
 		020A7EB11F127B5100C16785 /* XibViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XibViewController.xib; sourceTree = "<group>"; };
 		020A7EB61F127C1900C16785 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		020A7EB81F1285C900C16785 /* Titlable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Titlable.swift; sourceTree = "<group>"; };
+		02384B2F1F14A1CA00C1537A /* DeeplinkNavigator+Extenstion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DeeplinkNavigator+Extenstion.swift"; sourceTree = "<group>"; };
+		02384B311F14C91800C1537A /* PushOrPopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushOrPopViewController.swift; sourceTree = "<group>"; };
+		02384B331F14D12E00C1537A /* TestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		028BD6D21E8A934C000F43E7 /* DeeplinkNavigator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = DeeplinkNavigator.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		028BD6D31E8A934C000F43E7 /* DeeplinkConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = DeeplinkConvertible.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		028BD6D41E8A934C000F43E7 /* DeeplinkMatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = DeeplinkMatcher.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -127,7 +133,10 @@
 				020A7EB01F127B5100C16785 /* XibViewController.swift */,
 				020A7EB11F127B5100C16785 /* XibViewController.xib */,
 				02E0B7901E77BC4500A6845D /* InitViewController.swift */,
+				02384B311F14C91800C1537A /* PushOrPopViewController.swift */,
+				02384B331F14D12E00C1537A /* TestViewController.swift */,
 				020A7EB81F1285C900C16785 /* Titlable.swift */,
+				02384B2F1F14A1CA00C1537A /* DeeplinkNavigator+Extenstion.swift */,
 				02E0B7571E7662AD00A6845D /* Main.storyboard */,
 				02E0B75A1E7662AD00A6845D /* Assets.xcassets */,
 				02E0B75C1E7662AD00A6845D /* LaunchScreen.storyboard */,
@@ -325,10 +334,13 @@
 				02E0B7911E77BC4500A6845D /* InitViewController.swift in Sources */,
 				028BD6D91E8A934C000F43E7 /* DeeplinkMatcher.swift in Sources */,
 				02E0B7541E7662AD00A6845D /* AppDelegate.swift in Sources */,
+				02384B301F14A1CA00C1537A /* DeeplinkNavigator+Extenstion.swift in Sources */,
 				020A7EB91F1285C900C16785 /* Titlable.swift in Sources */,
 				020A7EAF1F1265F800C16785 /* DeeplinkNavigation.swift in Sources */,
 				028BD6D71E8A934C000F43E7 /* DeeplinkNavigator.swift in Sources */,
+				02384B341F14D12E00C1537A /* TestViewController.swift in Sources */,
 				028BD6DB1E8A934C000F43E7 /* UIViewController+TopViewController.swift in Sources */,
+				02384B321F14C91800C1537A /* PushOrPopViewController.swift in Sources */,
 				028BD6D81E8A934C000F43E7 /* DeeplinkConvertible.swift in Sources */,
 				028BD6DA1E8A934C000F43E7 /* DeeplinkNavigable.swift in Sources */,
 			);
@@ -470,6 +482,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 2L4985KKX7;
 				INFOPLIST_FILE = DeeplinkNavigator/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hanguang.app.DeeplinkNavigator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -484,6 +497,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 2L4985KKX7;
 				INFOPLIST_FILE = DeeplinkNavigator/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hanguang.app.DeeplinkNavigator;
 				PRODUCT_NAME = "$(TARGET_NAME)";

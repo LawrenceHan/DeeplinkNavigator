@@ -19,12 +19,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Navigator.map("/StoryboardNavigable", StoryboardViewController.self, context: "I am a StoryboardViewController")
         Navigator.map("/XibNavigable", XibViewController.self, context: "I am a XibViewController")
         Navigator.map("/InitNavigable", InitViewController.self, context: "I am a InitViewController")
+        Navigator.map("/PushOrPop", PushOrPopViewController.self, context: "I am a PushOrPopViewController")
+        Navigator.map("/test", TestViewController.self, context: "I am a PushOrPopViewController")
         Navigator.map("navigator://<path>") { (url, values) -> Bool in
             return Navigator.push(url) != nil
         }
         return true
     }
     
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        if Navigator.open(url) {
+            return true
+        }
+        return false
+    }
+    
+    @available(iOS 9.0, *)
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         if Navigator.open(url) {
             return true

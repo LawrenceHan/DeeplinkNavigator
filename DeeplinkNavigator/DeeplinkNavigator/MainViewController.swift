@@ -10,31 +10,9 @@ import UIKit
 
 class MainViewController: UITableViewController {
 
-    let items: [String] = ["StoryboardNavigable", "XibNavigable", "InitNavigable"]
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
+    let items: [String] = ["StoryboardNavigable", "XibNavigable", "InitNavigable", "push or pop"]
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return items.count
     }
 
@@ -46,6 +24,17 @@ class MainViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        if indexPath.row == items.count-1 {
+            if let nav = UIViewController.lhw_topMost?.navigationController {
+                let red = Navigator.viewController(for: "/StoryboardNavigable")!
+                let green = Navigator.viewController(for: "/XibNavigable")!
+                let blue = Navigator.viewController(for: "/InitNavigable")!
+                let pushOrPop = Navigator.viewController(for: "/PushOrPop")!
+                var viewControllers = nav.viewControllers
+                viewControllers.append(contentsOf: [red, green, blue, pushOrPop])
+                nav.setViewControllers(viewControllers, animated: true)
+            }
+        }
         Navigator.push("navigator://\(items[indexPath.row])", context: ["fromViewController": self], animated: true)
     }
 
