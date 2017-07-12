@@ -142,11 +142,11 @@ open class DeeplinkNavigator {
             
             // Determine which protocol should be called
             if item.navigable is StoryboardNavigable.Type {
-                return item.navigable.viewControllerFromStoryBoard(navigation: navigation)
+                return (item.navigable as! StoryboardNavigable.Type).viewControllerFromStoryBoard(navigation: navigation)
             } else if item.navigable is XibNavigable.Type {
-                return item.navigable.viewControllerFromXib(navigation: navigation)
+                return (item.navigable as! XibNavigable.Type).viewControllerFromXib(navigation: navigation)
             } else if item.navigable is InitNavigable.Type {
-                return item.navigable.init(navigation: navigation) as? UIViewController
+                return (item.navigable as! InitNavigable.Type).init(navigation: navigation) as? UIViewController
             }
         }
         return nil
@@ -176,7 +176,7 @@ open class DeeplinkNavigator {
     open func push(
         _ url: DeeplinkConvertible,
         context: NavigationContext? = nil,
-        from: UINavigationController? = nil,
+        from: DeeplinkPushable? = nil,
         animated: Bool = true
         ) -> UIViewController? {
         guard let viewController = self.viewController(for: url, context: context) else {
@@ -196,10 +196,10 @@ open class DeeplinkNavigator {
     @discardableResult
     open func push(
         _ viewController: UIViewController,
-        from: UINavigationController? = nil,
+        from: DeeplinkPushable? = nil,
         animated: Bool = true
         ) -> UIViewController? {
-        guard let navigationController = from ?? UIViewController.lhw_topMost?.navigationController else {
+        guard let navigationController = from != nil ? from : UIViewController.lhw_topMost?.navigationController else {
             return nil
         }
         guard (viewController is UINavigationController) == false else { return nil }
@@ -236,7 +236,7 @@ open class DeeplinkNavigator {
         _ url: DeeplinkConvertible,
         context: NavigationContext? = nil,
         wrap: Bool = false,
-        from: UIViewController? = nil,
+        from: DeeplinkPresentable? = nil,
         animated: Bool = true,
         completion: (() -> Void)? = nil
         ) -> UIViewController? {
@@ -259,11 +259,11 @@ open class DeeplinkNavigator {
     open func present(
         _ viewController: UIViewController,
         wrap: Bool = false,
-        from: UIViewController? = nil,
+        from: DeeplinkPresentable? = nil,
         animated: Bool = true,
         completion: (() -> Void)? = nil
         ) -> UIViewController? {
-        guard let fromViewController = from ?? UIViewController.lhw_topMost else { return nil }
+        guard let fromViewController = from != nil ? from : UIViewController.lhw_topMost else { return nil }
         let wrap = wrap && (viewController is UINavigationController) == false
         if wrap {
             let navigationController = UINavigationController(rootViewController: viewController)

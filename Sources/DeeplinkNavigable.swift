@@ -29,6 +29,12 @@
 
 import UIKit
 
+/// A type that can be initialized with URLs and values.
+/// You should not inherit this protocol directly
+///
+/// - seealso: `DeeplinkNavigator`
+public protocol DeeplinkNavigable {}
+
 public protocol StoryboardNavigable: DeeplinkNavigable {
     /// Creates an instance with specified DeeplinkNavigation and returns it. Returns `nil` if the DeeplinkNavigation
     /// and the values are not met the condition to create an instance.
@@ -62,43 +68,4 @@ public protocol InitNavigable: DeeplinkNavigable {
     ///
     /// - parameter navigation: The navigation information that contains url, values and context.
     init?(navigation: DeeplinkNavigation)
-}
-
-/// A type that can be initialized with URLs and values.
-/// You should not inherit this protocol directly
-///
-/// - seealso: `DeeplinkNavigator`
-public protocol DeeplinkNavigable {
-    static func viewControllerFromStoryBoard(navigation: DeeplinkNavigation) -> UIViewController?
-    static func viewControllerFromXib(navigation: DeeplinkNavigation) -> UIViewController?
-    init?(navigation: DeeplinkNavigation)
-}
-
-public extension StoryboardNavigable {
-    init?(navigation: DeeplinkNavigation) {
-        return nil
-    }
-    static func viewControllerFromXib(navigation: DeeplinkNavigation) -> UIViewController? {
-        return nil
-    }
-}
-
-public extension XibNavigable {
-    init?(navigation: DeeplinkNavigation) {
-        return nil
-    }
-    
-    static func viewControllerFromStoryBoard(navigation: DeeplinkNavigation) -> UIViewController? {
-        return nil
-    }
-}
-
-public extension InitNavigable {
-    static func viewControllerFromStoryBoard(navigation: DeeplinkNavigation) -> UIViewController? {
-        return nil
-    }
-    
-    static func viewControllerFromXib(navigation: DeeplinkNavigation) -> UIViewController? {
-        return nil
-    }
 }

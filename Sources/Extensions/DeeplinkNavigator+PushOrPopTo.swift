@@ -1,5 +1,5 @@
 //
-//  DeeplinkNavigator+Extenstion.swift
+//  DeeplinkNavigator+PushOrPopTo.swift
 //  DeeplinkNavigator
 //
 //  Created by Hanguang on 11/07/2017.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension DeeplinkNavigator {
+public extension DeeplinkNavigator {
     
     /// Try to pop to a viewController if it's exist in UINavigationController's stack already,
     /// return false if cannot find related viewController.
