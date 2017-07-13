@@ -33,7 +33,7 @@ Navigator.map("myapp://alert") { url, values in
 
 DeeplinkNavigator can push and present view controllers and execute closures with URLs.
 
-Provide the `from` parameter to `push()` to specify the navigation controller which the new view controller will be pushed. Similarly, provide the `from` parameter to `present()` to specify the view controller which the new view controller will be presented. If the `nil` is passed, which is a default value, current application's top most view controller will be used to push or present view controllers.
+Provide the `from` parameter to `push()` to specify the `DeeplinkPushable` which the new view controller will be pushed. Similarly, provide the `from` parameter to `present()` to specify the `DeeplinkPresentable` which the new view controller will be presented. If the `nil` is passed, which is a default value, current application's top most view controller will be used to push or present view controllers.
 
 `present()` takes an extra parameter: `wrap`. If `true` is specified, the new view controller will be wrapped with a `UINavigationController`. Default value is `false`.
 
@@ -136,6 +136,19 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 ```
 
+#### Passing UIView to `push()` or `present()`
+
+>
+Sometime you having a mutiple windows hierarchy situation, you can pass a UIView object
+and let DeeplinkNavigator to find the right `UINavigationController` or `UIViewController`
+for you.
+
+```swift
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        Navigator.push("myapp://test", from: cell, animated: true)
+    }
+```
 
 #### Implementing AppDelegate Launch Option URL
 
