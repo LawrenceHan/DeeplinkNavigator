@@ -10,7 +10,14 @@ import UIKit
 
 class MainViewController: UITableViewController {
 
-    let items: [String] = ["StoryboardNavigable", "XibNavigable", "InitNavigable", "push or pop"]
+    let items: [String] = [
+        "StoryboardNavigable",
+        "XibNavigable",
+        "InitNavigable",
+        "push from UIView",
+        "present from UIView",
+        "push or pop"
+        ]
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items.count
@@ -34,6 +41,12 @@ class MainViewController: UITableViewController {
                 viewControllers.append(contentsOf: [red, green, blue, pushOrPop])
                 nav.setViewControllers(viewControllers, animated: true)
             }
+        } else if indexPath.row == 3 {
+            let cell = tableView.cellForRow(at: indexPath)
+            Navigator.push("/test", from: cell, animated: true)
+        } else if indexPath.row == 4 {
+            let cell = tableView.cellForRow(at: indexPath)
+            Navigator.present("/test", from: cell, animated: true)
         }
         Navigator.push("navigator://\(items[indexPath.row])", context: ["fromViewController": self], animated: true)
     }
