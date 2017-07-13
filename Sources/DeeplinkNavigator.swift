@@ -189,7 +189,7 @@ open class DeeplinkNavigator {
     ///     userViewController?.doSomething()
     ///
     /// - parameter url: The URL to find view controllers.
-    /// - parameter from: The navigation controller which is used to push a view controller. Use application's top-most
+    /// - parameter from: The DeeplinkPushable type which is used to push a view controller. Use application's top-most
     ///     view controller if `nil` is specified. `nil` by default.
     /// - parameter animated: Whether animates view controller transition or not. `true` by default.
     ///
@@ -211,7 +211,7 @@ open class DeeplinkNavigator {
     /// Pushes a view controller using `UINavigationController.pushViewController()`.
     ///
     /// - parameter viewController: The `UIViewController` instance to be pushed.
-    /// - parameter from: The navigation controller which is used to push a view controller. Use application's top-most
+    /// - parameter from: The DeeplinkPushable type which is used to push a view controller. Use application's top-most
     ///     view controller if `nil` is specified. `nil` by default.
     /// - parameter animated: Whether animates view controller transition or not. `true` by default.
     ///
@@ -247,7 +247,7 @@ open class DeeplinkNavigator {
     /// - parameter url: The URL to find view controllers.
     /// - parameter wrap: Wraps the view controller with a `UINavigationController` if `true` is specified. `false` by
     ///     default.
-    /// - parameter from: The view controller which is used to present a view controller. Use application's top-most
+    /// - parameter from: The DeeplinkPresentable type which is used to present a view controller. Use application's top-most
     ///     view controller if `nil` is specified. `nil` by default.
     /// - parameter animated: Whether animates view controller transition or not. `true` by default.
     /// - parameter completion: Called after the transition has finished.
@@ -272,7 +272,7 @@ open class DeeplinkNavigator {
     /// - parameter viewController: The `UIViewController` instance to be presented.
     /// - parameter wrap: Wraps the view controller with a `UINavigationController` if `true` is specified. `false` by
     ///     default.
-    /// - parameter from: The view controller which is used to present a view controller. Use application's top-most
+    /// - parameter from: The DeeplinkPresentable type which is used to present a view controller. Use application's top-most
     ///     view controller if `nil` is specified. `nil` by default.
     /// - parameter animated: Whether animates view controller transition or not. `true` by default.
     /// - parameter completion: Called after the transition has finished.

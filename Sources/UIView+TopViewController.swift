@@ -42,10 +42,10 @@ extension UIView {
     /// Returns current view's parentViewController by
     /// traverse its responder chain
     public var lhw_parentViewController: UIViewController? {
-        var parentResponder: UIResponder? = self
-        while parentResponder != nil {
-            parentResponder = parentResponder!.next
-            if let viewController = parentResponder as? UIViewController {
+        var nextResponder: UIResponder? = self
+        while nextResponder != nil {
+            nextResponder = nextResponder!.next
+            if let viewController = nextResponder as? UIViewController {
                 return viewController
             }
         }
