@@ -19,7 +19,7 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
-//
+
 
 //  MIT License
 //
@@ -43,58 +43,78 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 //
-//  UIViewController+TopViewController.swift
+//  DeeplinkConvertible.swift
 //  DeeplinkNavigator
 //
 //  Created by Hanguang on 13/03/2017.
 //  Copyright © 2017 Hanguang. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
-extension UIViewController {
+/// A type which can be converted to URL string.
+public protocol DeeplinkConvertible {
+    var urlValue: URL? { get }
+    var urlStringValue: String { get }
     
-    /// Returns the current application's top most view controller.
-    open class var lhw_topMost: UIViewController? {
-        var rootViewController: UIViewController?
-        let currentWindows = UIApplication.shared.windows
-        
-        for window in currentWindows {
-            if let windowRootViewController = window.rootViewController {
-                rootViewController = windowRootViewController
-                break
+    /// Returns URL query parameters. For convenience, this property will never return `nil` even if there's no query
+    /// string in URL. This property doesn't take care of duplicated keys. Use `queryItems` for strictness.
+    ///
+    /// - seealso: `queryItems`
+    var queryParameters: [String: String] { get }
+    
+    /// Returns `queryItems` property of `URLComponents` instance.
+    ///
+    /// - seealso: `queryParameters`
+    @available(iOS 8, *)
+    var queryItems: [URLQueryItem]? { get }
+}
+
+extension DeeplinkConvertible {
+    public var queryParameters: [String: String] {
+        var parameters = [String: String]()
+        self.urlValue?.query?.components(separatedBy: "&").forEach {
+            let keyAndValue = $0.components(separatedBy: "=")
+            if keyAndValue.count == 2 {
+                let key = keyAndValue[0]
+                let value = keyAndValue[1].replacingOccurrences(of: "+", with: " ").removingPercentEncoding
+                    ?? keyAndValue[1]
+                parameters[key] = value
             }
         }
-        
-        return lhw_topMost(of: rootViewController)
+        return parameters
     }
     
-    /// Returns the top most view controller from given view controller's stack.
-    class func lhw_topMost(of viewController: UIViewController?) -> UIViewController? {
-        // UITabBarController
-        if let tabBarController = viewController as? UITabBarController,
-            let selectedViewController = tabBarController.selectedViewController {
-            return lhw_topMost(of: selectedViewController)
+    @available(iOS 8, *)
+    public var queryItems: [URLQueryItem]? {
+        return URLComponents(string: self.urlStringValue)?.queryItems
+    }
+}
+
+extension String: DeeplinkConvertible {
+    public var urlValue: URL? {
+        if let url = URL(string: self) {
+            return url
         }
-        
-        // UINavigationController
-        if let navigationController = viewController as? UINavigationController,
-            let visibleViewController = navigationController.visibleViewController {
-            return lhw_topMost(of: visibleViewController)
-        }
-        
-        // presented view controller
-        if let presentedViewController = viewController?.presentedViewController {
-            return lhw_topMost(of: presentedViewController)
-        }
-        
-        // child view controller
-        for subview in viewController?.view?.subviews ?? [] {
-            if let childViewController = subview.next as? UIViewController {
-                return lhw_topMost(of: childViewController)
-            }
-        }
-        
-        return viewController
+        var set = CharacterSet()
+        set.formUnion(.urlHostAllowed)
+        set.formUnion(.urlPathAllowed)
+        set.formUnion(.urlQueryAllowed)
+        set.formUnion(.urlFragmentAllowed)
+        return self.addingPercentEncoding(withAllowedCharacters: set).flatMap { URL(string: $0) }
+    }
+    
+    public var urlStringValue: String {
+        return self
+    }
+}
+
+extension URL: DeeplinkConvertible {
+    public var urlValue: URL? {
+        return self
+    }
+    
+    public var urlStringValue: String {
+        return self.absoluteString
     }
 }

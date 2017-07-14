@@ -43,58 +43,44 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 //
-//  UIViewController+TopViewController.swift
+//  DeeplinkNavigable.swift
 //  DeeplinkNavigator
 //
-//  Created by Hanguang on 13/03/2017.
+//  Created by Hanguang on 14/03/2017.
 //  Copyright © 2017 Hanguang. All rights reserved.
 //
 
 import UIKit
 
-extension UIViewController {
-    
-    /// Returns the current application's top most view controller.
-    open class var lhw_topMost: UIViewController? {
-        var rootViewController: UIViewController?
-        let currentWindows = UIApplication.shared.windows
-        
-        for window in currentWindows {
-            if let windowRootViewController = window.rootViewController {
-                rootViewController = windowRootViewController
-                break
-            }
-        }
-        
-        return lhw_topMost(of: rootViewController)
-    }
-    
-    /// Returns the top most view controller from given view controller's stack.
-    class func lhw_topMost(of viewController: UIViewController?) -> UIViewController? {
-        // UITabBarController
-        if let tabBarController = viewController as? UITabBarController,
-            let selectedViewController = tabBarController.selectedViewController {
-            return lhw_topMost(of: selectedViewController)
-        }
-        
-        // UINavigationController
-        if let navigationController = viewController as? UINavigationController,
-            let visibleViewController = navigationController.visibleViewController {
-            return lhw_topMost(of: visibleViewController)
-        }
-        
-        // presented view controller
-        if let presentedViewController = viewController?.presentedViewController {
-            return lhw_topMost(of: presentedViewController)
-        }
-        
-        // child view controller
-        for subview in viewController?.view?.subviews ?? [] {
-            if let childViewController = subview.next as? UIViewController {
-                return lhw_topMost(of: childViewController)
-            }
-        }
-        
-        return viewController
-    }
+/// A type that can be initialized with URLs and values.
+/// You should not inherit this protocol directly
+///
+/// - seealso: `DeeplinkNavigator`
+public protocol DeeplinkNavigable {}
+
+public protocol StoryboardNavigable: DeeplinkNavigable {
+    /// Creates an instance with specified DeeplinkNavigation and returns it. Returns `nil` if the DeeplinkNavigation
+    /// and the values are not met the condition to create an instance.
+    ///
+    /// - Returns: A UIViewController from a Storyboard
+    static func viewControllerFromStoryBoard(navigation: DeeplinkNavigation) -> UIViewController?
+}
+
+public protocol InitNavigable: DeeplinkNavigable {
+    /// Creates an instance with specified DeeplinkNavigation and returns it. Returns `nil` if the DeeplinkNavigation
+    /// and the values are not met the condition to create an instance.
+    ///
+    /// For example, to validate whether a value of `id` is an `Int`:
+    ///
+    ///     convenience init?(navigation: DeeplinkNavigation) {
+    ///       guard let id = navigation.values["id"] as? Int else {
+    ///         return nil
+    ///       }
+    ///       self.init(id: id)
+    ///     }
+    ///
+    /// Do not call this initializer directly. It is recommended to use with `URLNavigator`.
+    ///
+    /// - parameter navigation: The navigation information that contains url, values and context.
+    init?(navigation: DeeplinkNavigation)
 }
