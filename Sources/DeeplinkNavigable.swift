@@ -66,14 +66,6 @@ public protocol StoryboardNavigable: DeeplinkNavigable {
     static func viewControllerFromStoryBoard(navigation: DeeplinkNavigation) -> UIViewController?
 }
 
-public protocol XibNavigable: DeeplinkNavigable {
-    /// Creates an instance with specified DeeplinkNavigation and returns it. Returns `nil` if the DeeplinkNavigation
-    /// and the values are not met the condition to create an instance.
-    ///
-    /// - Returns: A UIViewController from an Xib
-    static func viewControllerFromXib(navigation: DeeplinkNavigation) -> UIViewController?
-}
-
 public protocol InitNavigable: DeeplinkNavigable {
     /// Creates an instance with specified DeeplinkNavigation and returns it. Returns `nil` if the DeeplinkNavigation
     /// and the values are not met the condition to create an instance.

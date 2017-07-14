@@ -20,7 +20,6 @@
 		029E45ED1F17783E00B95148 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 029E45DE1F17783E00B95148 /* Assets.xcassets */; };
 		029E45EE1F17783E00B95148 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 029E45DF1F17783E00B95148 /* LaunchScreen.storyboard */; };
 		029E45EF1F17783E00B95148 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 029E45E11F17783E00B95148 /* Main.storyboard */; };
-		029E45F01F17783E00B95148 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 029E45E31F17783E00B95148 /* Info.plist */; };
 		029E45F11F17783E00B95148 /* InitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029E45E41F17783E00B95148 /* InitViewController.swift */; };
 		029E45F21F17783E00B95148 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029E45E51F17783E00B95148 /* MainViewController.swift */; };
 		029E45F31F17783E00B95148 /* PushOrPopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029E45E61F17783E00B95148 /* PushOrPopViewController.swift */; };
@@ -42,7 +41,6 @@
 		029E46111F177B0C00B95148 /* UIView+TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02384B3A1F163DDA00C1537A /* UIView+TopViewController.swift */; };
 		029E46121F177B0C00B95148 /* DeeplinkNavigator+PushOrPopTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02384B361F15BCA100C1537A /* DeeplinkNavigator+PushOrPopTo.swift */; };
 		02E0B7851E77B84100A6845D /* DeeplinkNavigatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E0B7841E77B84100A6845D /* DeeplinkNavigatorTests.swift */; };
-		E9F04E7FCB32F69EBE12ABD0 /* Pods_DeeplinkNavigator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41980B3897308074789740B2 /* Pods_DeeplinkNavigator.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,9 +105,6 @@
 		02E0B7821E77B84100A6845D /* DeeplinkNavigatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DeeplinkNavigatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		02E0B7841E77B84100A6845D /* DeeplinkNavigatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeeplinkNavigatorTests.swift; sourceTree = "<group>"; };
 		02E0B7861E77B84100A6845D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		396A8B6D9E0B6FF14BE46D72 /* Pods-DeeplinkNavigator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeeplinkNavigator.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DeeplinkNavigator/Pods-DeeplinkNavigator.debug.xcconfig"; sourceTree = "<group>"; };
-		41980B3897308074789740B2 /* Pods_DeeplinkNavigator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DeeplinkNavigator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		97A662B71DA73BA450C99444 /* Pods-DeeplinkNavigator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeeplinkNavigator.release.xcconfig"; path = "Pods/Target Support Files/Pods-DeeplinkNavigator/Pods-DeeplinkNavigator.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,7 +120,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				029E46051F177AF000B95148 /* DeeplinkNavigator.framework in Frameworks */,
-				E9F04E7FCB32F69EBE12ABD0 /* Pods_DeeplinkNavigator.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -202,8 +196,6 @@
 				029E45DC1F17783E00B95148 /* example */,
 				02E0B7831E77B84100A6845D /* DeeplinkNavigatorTests */,
 				02E0B7511E7662AD00A6845D /* Products */,
-				575091F0C67A65A57A17079B /* Pods */,
-				FC9AC21FF99756B83A11D2A3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -224,23 +216,6 @@
 				02E0B7861E77B84100A6845D /* Info.plist */,
 			);
 			path = DeeplinkNavigatorTests;
-			sourceTree = "<group>";
-		};
-		575091F0C67A65A57A17079B /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				396A8B6D9E0B6FF14BE46D72 /* Pods-DeeplinkNavigator.debug.xcconfig */,
-				97A662B71DA73BA450C99444 /* Pods-DeeplinkNavigator.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		FC9AC21FF99756B83A11D2A3 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				41980B3897308074789740B2 /* Pods_DeeplinkNavigator.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -279,12 +254,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 02E0B7621E7662AD00A6845D /* Build configuration list for PBXNativeTarget "example" */;
 			buildPhases = (
-				E91890F42952DEB2C75C64A5 /* [CP] Check Pods Manifest.lock */,
 				02E0B74C1E7662AD00A6845D /* Sources */,
 				02E0B74D1E7662AD00A6845D /* Frameworks */,
 				02E0B74E1E7662AD00A6845D /* Resources */,
-				086A0FBDFC2149FD1FD17534 /* [CP] Embed Pods Frameworks */,
-				19878AE4F6198EEF70AD0A00 /* [CP] Copy Pods Resources */,
 				029E45D01F176EE600B95148 /* Embed Frameworks */,
 			);
 			buildRules = (
@@ -376,7 +348,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				029E45F81F17783E00B95148 /* XibViewController.xib in Resources */,
-				029E45F01F17783E00B95148 /* Info.plist in Resources */,
 				029E45EF1F17783E00B95148 /* Main.storyboard in Resources */,
 				029E45ED1F17783E00B95148 /* Assets.xcassets in Resources */,
 				029E45EE1F17783E00B95148 /* LaunchScreen.storyboard in Resources */,
@@ -391,54 +362,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		086A0FBDFC2149FD1FD17534 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DeeplinkNavigator/Pods-DeeplinkNavigator-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		19878AE4F6198EEF70AD0A00 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DeeplinkNavigator/Pods-DeeplinkNavigator-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E91890F42952DEB2C75C64A5 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		029E45F91F177AF000B95148 /* Sources */ = {
@@ -667,7 +590,6 @@
 		};
 		02E0B7631E7662AD00A6845D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 396A8B6D9E0B6FF14BE46D72 /* Pods-DeeplinkNavigator.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -683,7 +605,6 @@
 		};
 		02E0B7641E7662AD00A6845D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 97A662B71DA73BA450C99444 /* Pods-DeeplinkNavigator.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -735,6 +656,7 @@
 				029E46091F177AF000B95148 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		02E0B74B1E7662AD00A6845D /* Build configuration list for PBXProject "DeeplinkNavigator" */ = {
 			isa = XCConfigurationList;

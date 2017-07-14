@@ -166,8 +166,6 @@ open class DeeplinkNavigator {
             // Determine which protocol should be called
             if item.navigable is StoryboardNavigable.Type {
                 return (item.navigable as! StoryboardNavigable.Type).viewControllerFromStoryBoard(navigation: navigation)
-            } else if item.navigable is XibNavigable.Type {
-                return (item.navigable as! XibNavigable.Type).viewControllerFromXib(navigation: navigation)
             } else if item.navigable is InitNavigable.Type {
                 return (item.navigable as! InitNavigable.Type).init(navigation: navigation) as? UIViewController
             }

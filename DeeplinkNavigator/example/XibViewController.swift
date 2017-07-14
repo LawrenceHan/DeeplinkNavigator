@@ -14,10 +14,8 @@ final class XibViewController: UIViewController, Titlable {
     }
 }
 
-extension XibViewController: XibNavigable {
-    static func viewControllerFromXib(navigation: DeeplinkNavigation) -> UIViewController? {
-        print(navigation)
-        let vc = XibViewController(nibName: String(describing: self), bundle: nil)
-        return vc
+extension XibViewController: InitNavigable {
+    convenience init?(navigation: DeeplinkNavigation) {
+        self.init()
     }
 }
