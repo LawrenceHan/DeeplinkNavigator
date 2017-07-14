@@ -143,6 +143,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 ```
 
+
 #### Passing UIView to `push()` or `present()`
 
 >
@@ -156,6 +157,19 @@ for you.
         Navigator.push("myapp://test", from: cell, animated: true)
     }
 ```
+
+
+#### Using `pushOrPopTo` extenstion
+
+>
+You want to push a viewController, but you also want to pop to that viewController if it
+exist already.
+
+```swift
+Navigator.popTo("myapp://user")
+Navigator.pushOrPopTo("myapp://user/10")
+```
+
 
 #### Implementing AppDelegate Launch Option URL
 
@@ -205,6 +219,7 @@ func application(_ application: UIApplication, open url: URL, sourceApplication:
 }
 ```
 
+
 #### Setting Default Scheme
 
 Set `scheme` property on `DeeplinkNavigator` instance to get rid of schemes in every URLs.
@@ -229,6 +244,7 @@ Navigator.scheme = "myapp"
 Navigator.map("/user/<int:id>", UserViewController.self) // `myapp://user/<int:id>`
 Navigator.map("http://<path>", MyWebViewController.self) // `http://<path>`
 ```
+
 
 #### Passing Context when Mapping
 
