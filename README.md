@@ -85,9 +85,17 @@ extension InitViewController: InitNavigable {
 Installation
 ------------
 
-```ruby
-  pod 'DeeplinkNavigator'
-```
+- [CocoaPods](https://cocoapods.org):
+
+    ```ruby
+    pod 'DeeplinkNavigator'
+    ```
+
+- [Carthage](https://github.com/Carthage/Carthage):
+
+    ```
+    github "LawrenceHan/DeeplinkNavigator"
+    ```
 
 Tips and Tricks
 ---------------
