@@ -84,7 +84,6 @@
 		028BD6D41E8A934C000F43E7 /* DeeplinkMatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = DeeplinkMatcher.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		028BD6D51E8A934C000F43E7 /* DeeplinkNavigable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = DeeplinkNavigable.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		028BD6D61E8A934C000F43E7 /* UIViewController+TopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "UIViewController+TopViewController.swift"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		029E45DA1F1772C700B95148 /* DeeplinkNavigator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeeplinkNavigator.h; sourceTree = "<group>"; };
 		029E45DD1F17783E00B95148 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		029E45DE1F17783E00B95148 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		029E45E01F17783E00B95148 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -144,7 +143,6 @@
 		028BD6D11E8A934C000F43E7 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				029E45DA1F1772C700B95148 /* DeeplinkNavigator.h */,
 				028BD6D21E8A934C000F43E7 /* DeeplinkNavigator.swift */,
 				028BD6D51E8A934C000F43E7 /* DeeplinkNavigable.swift */,
 				020A7EAE1F1265F800C16785 /* DeeplinkNavigation.swift */,

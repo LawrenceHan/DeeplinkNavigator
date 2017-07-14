@@ -39,13 +39,10 @@ public extension DeeplinkNavigator {
     ///     view controller if `nil` is specified. `nil` by default.
     /// - parameter animated: Whether animates view controller transition or not. `true` by default.
     ///
-    /// - returns: The pushed view controller. Returns `nil` if there's no matching view controller or failed to push
-    ///            a view controller.
-    /// - Returns: A Bool value indicated success or failure
+    /// - returns: A Bool value indicated success or failure
     @discardableResult
     public func popTo(
         _ url: DeeplinkConvertible,
-        context: NavigationContext? = nil,
         from: UINavigationController? = nil,
         animated: Bool = true
         ) -> Bool {
@@ -80,7 +77,7 @@ public extension DeeplinkNavigator {
         from: UINavigationController? = nil,
         animated: Bool = true
         ) -> UIViewController? {
-        if popTo(url, context: context, from: from, animated: animated) == false {
+        if popTo(url, from: from, animated: animated) == false {
             return push(url, context: context, from: from, animated: animated)
         }
         return nil
