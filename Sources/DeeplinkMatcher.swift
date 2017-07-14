@@ -54,12 +54,12 @@
 
 import Foundation
 
-/// LHWURLMatchComponents encapsulates data about a URL match.
+/// DeeplinkMatchComponents encapsulates data about a URL match.
 /// It contains the following attributes:
 ///
 /// - pattern: The url pattern that was matched.
 /// - values: The values extracted from the URL.
-public struct LHWURLMatchComponents {
+public struct DeeplinkMatchComponents {
     public let pattern: String
     public let values: [String: Any]
 }
@@ -94,7 +94,7 @@ open class DeeplinkMatcher {
     ///
     /// For example:
     ///
-    ///     let LHWURLMatchComponents = matcher.match("myapp://user/123", from: ["myapp://user/<int:id>"])
+    ///     let DeeplinkMatchComponents = matcher.match("myapp://user/123", from: ["myapp://user/<int:id>"])
     ///
     /// The value of the `URLPattern` from an example above is `"myapp://user/<int:id>"` and the value of the `values`
     /// is `["id": 123]`.
@@ -102,9 +102,9 @@ open class DeeplinkMatcher {
     /// - parameter url: The placeholder-filled URL.
     /// - parameter from: The array of URL patterns.
     ///
-    /// - returns: A `LHWURLMatchComponents` struct that holds the URL pattern string, a dictionary of URL placeholder
+    /// - returns: A `DeeplinkMatchComponents` struct that holds the URL pattern string, a dictionary of URL placeholder
     ///            values, and any query items.
-    open func match(_ url: DeeplinkConvertible, scheme: String? = nil, from urlPatterns: [String]) -> LHWURLMatchComponents? {
+    open func match(_ url: DeeplinkConvertible, scheme: String? = nil, from urlPatterns: [String]) -> DeeplinkMatchComponents? {
         let normalizedURLString = self.normalized(url, scheme: scheme).urlStringValue
         let urlPathComponents = normalizedURLString.components(separatedBy: "/") // e.g. ["myapp:", "user", "123"]
         
@@ -136,7 +136,7 @@ open class DeeplinkMatcher {
                 }
             }
             
-            return LHWURLMatchComponents(pattern: urlPattern, values: values)
+            return DeeplinkMatchComponents(pattern: urlPattern, values: values)
         }
         return nil
     }
