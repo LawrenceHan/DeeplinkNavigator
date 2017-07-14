@@ -43,20 +43,19 @@ public extension DeeplinkNavigator {
     @discardableResult
     public func popTo(
         _ url: DeeplinkConvertible,
-        from: UINavigationController? = nil,
+        from: DeeplinkPushable? = nil,
         animated: Bool = true
-        ) -> Bool {
+        ) -> [UIViewController]? {
         if let urlMatchComponents = DeeplinkMatcher.default.match(url, scheme: self.scheme, from: Array(self.urlMap.keys)) {
-            guard let item = self.urlMap[urlMatchComponents.pattern] else { return false }
-            guard let navigationController = from ?? UIViewController.lhw_topMost?.navigationController else { return false }
+            guard let item = self.urlMap[urlMatchComponents.pattern] else { return nil }
+            guard let navigationController = from?.lhw_navigationController ?? UIViewController.lhw_topMost?.navigationController else { return nil }
             for viewController in navigationController.viewControllers.reversed() {
                 if viewController.isKind(of: item.navigable as! UIViewController.Type) {
-                    navigationController.popToViewController(viewController, animated: true)
-                    return true
+                    return navigationController.popToViewController(viewController, animated: true)
                 }
             }
         }
-        return false
+        return nil
     }
     
     
@@ -74,10 +73,10 @@ public extension DeeplinkNavigator {
     public func pushOrPopTo(
         _ url: DeeplinkConvertible,
         context: NavigationContext? = nil,
-        from: UINavigationController? = nil,
+        from: DeeplinkPushable? = nil,
         animated: Bool = true
         ) -> UIViewController? {
-        if popTo(url, from: from, animated: animated) == false {
+        if popTo(url, from: from, animated: animated) == nil {
             return push(url, context: context, from: from, animated: animated)
         }
         return nil

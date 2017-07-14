@@ -220,7 +220,7 @@ open class DeeplinkNavigator {
         from: DeeplinkPushable? = nil,
         animated: Bool = true
         ) -> UIViewController? {
-        guard let navigationController = from != nil ? from : UIViewController.lhw_topMost?.navigationController else {
+        guard let navigationController = from ?? UIViewController.lhw_topMost?.navigationController else {
             return nil
         }
         guard (viewController is UINavigationController) == false else { return nil }
@@ -284,7 +284,7 @@ open class DeeplinkNavigator {
         animated: Bool = true,
         completion: (() -> Void)? = nil
         ) -> UIViewController? {
-        guard let fromViewController = from != nil ? from : UIViewController.lhw_topMost else { return nil }
+        guard let fromViewController = from ?? UIViewController.lhw_topMost else { return nil }
         let wrap = wrap && (viewController is UINavigationController) == false
         if wrap {
             let navigationController = UINavigationController(rootViewController: viewController)

@@ -33,15 +33,15 @@ extension UIView {
     
     /// Returns the current view's top most navigationController.
     public var lhw_navigationController: UINavigationController? {
-        if let navigationController = lhw_parentViewController?.navigationController {
+        if let navigationController = lhw_topViewController?.navigationController {
             return navigationController
         }
-        return UIViewController.lhw_topMost(of: lhw_parentViewController)?.navigationController
+        return UIViewController.lhw_topMost(of: lhw_topViewController)?.navigationController
     }
     
     /// Returns current view's parentViewController by
     /// traverse its responder chain
-    public var lhw_parentViewController: UIViewController? {
+    public var lhw_topViewController: UIViewController? {
         var nextResponder: UIResponder? = self
         while nextResponder != nil {
             nextResponder = nextResponder!.next

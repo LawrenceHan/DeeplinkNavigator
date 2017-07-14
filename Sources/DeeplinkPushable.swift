@@ -31,11 +31,13 @@ import UIKit
 
 /// A type which able to push a viewController
 public protocol DeeplinkPushable {
+    var lhw_navigationController: UINavigationController? { get }
     func pushViewController(_ viewController: UIViewController, animated: Bool)
 }
 
 /// A type which able to present a viewController
 public protocol DeeplinkPresentable {
+    var lhw_topViewController: UIViewController? { get }
     func present(_ viewController: UIViewController, animated: Bool, completion: (() -> Swift.Void)?)
 }
 
@@ -45,9 +47,18 @@ extension UIView: DeeplinkPushable, DeeplinkPresentable {
     }
     
     public func present(_ viewController: UIViewController, animated: Bool, completion: (() -> Void)?) {
-        lhw_parentViewController?.present(viewController, animated: animated, completion: completion)
+        lhw_topViewController?.present(viewController, animated: animated, completion: completion)
     }
 }
 
-extension UINavigationController: DeeplinkPushable {}
-extension UIViewController: DeeplinkPresentable {}
+extension UINavigationController: DeeplinkPushable {
+    public var lhw_navigationController: UINavigationController? {
+        return self
+    }
+}
+
+extension UIViewController: DeeplinkPresentable {
+    public var lhw_topViewController: UIViewController? {
+        return self
+    }
+}
