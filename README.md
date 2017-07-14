@@ -5,7 +5,7 @@ DeeplinkNavigator
 
 ![Swift](https://img.shields.io/badge/Swift-3.0-orange.svg)
 
-DeeplinkNavigator can be used for mapping URL patterns with 2 kind of types: `DeeplinkNavigable` and `DeeplinkOpenHandler`. `DeeplinkNavigable` is a protocol which has 3 sub-protocols: `StoryboardNavigable`, `XibNavigable`, `InitNavigable` (default init method for viewController). `DeeplinkOpenHandler` is a closure which can be executed. Both an initializer and a closure receive an URL and placeholder values.
+DeeplinkNavigator can be used for mapping URL patterns with 2 kind of types: `DeeplinkNavigable` and `DeeplinkOpenHandler`. `DeeplinkNavigable` is a protocol which has 2 sub-protocols: `StoryboardNavigable`, `InitNavigable` (default init method for viewController). `DeeplinkOpenHandler` is a closure which can be executed. Both an initializer and a closure receive an URL and placeholder values.
 
 Getting Started
 ---------------
@@ -46,7 +46,7 @@ Navigator.open("myapp://alert?title=Hello&message=World")
 
 #### 3. Implementing DeeplinkNavigable
 
-View controllers should conform a protocol `DeeplinkNavigable` to be mapped with URLs. A protocol `DeeplinkNavigable` defines 3 initialization protocols: `StoryboardNavigable`, `XibNavigable`, `InitNavigable` with parameter `navigation` which contains `url`, `values`, `mappingContext` and `navigationContext` as properties.
+View controllers should conform a protocol `DeeplinkNavigable` to be mapped with URLs. A protocol `DeeplinkNavigable` defines 2 initialization protocols: `StoryboardNavigable`, `InitNavigable` with parameter `navigation` which contains `url`, `values`, `mappingContext` and `navigationContext` as properties.
 
 Property `url` is an URL that is passed from `DeeplinkNavigator.push()` and `DeeplinkNavigator.present()`. Parameter `values` is a dictionary that contains URL placeholder keys and values. Parameter `mappingContext` is a context passed from a `map()` function. Parameter `navigationContext` is a dictionary which contains extra values passed from `push()` or `present()`.
 
@@ -65,10 +65,9 @@ extension StoryboardViewController: StoryboardNavigable {
 final class XibViewController: UIViewController {
 }
 
-extension XibViewController: XibNavigable {
-    static func viewControllerFromXib(navigation: DeeplinkNavigation) -> UIViewController? {
-        let vc = XibViewController(nibName: String(describing: self), bundle: nil)
-        return vc
+extension XibViewController: InitNavigable {
+    convenience init?(navigation: DeeplinkNavigation) {
+        self.init()
     }
 }
 
