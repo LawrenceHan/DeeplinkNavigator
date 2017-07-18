@@ -51,8 +51,7 @@ extension UIView: DeeplinkPushable, DeeplinkPresentable {
     }
 }
 
-extension UIViewController: DeeplinkPushable,DeeplinkPresentable {
-    
+extension UIViewController: DeeplinkPushable, DeeplinkPresentable {
     public var lhw_navigationController: UINavigationController? {
         if self is UINavigationController {
             return self as? UINavigationController
@@ -65,8 +64,7 @@ extension UIViewController: DeeplinkPushable,DeeplinkPresentable {
     }
     
     public func pushViewController(_ viewController: UIViewController, animated: Bool) {
-        if  viewController is UINavigationController  { return }
+        if viewController is UINavigationController { return }
         lhw_navigationController?.pushViewController(viewController, animated: animated)
     }
-    
 }
