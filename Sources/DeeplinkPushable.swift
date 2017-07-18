@@ -65,6 +65,7 @@ extension UIViewController: DeeplinkPushable,DeeplinkPresentable {
     }
     
     public func pushViewController(_ viewController: UIViewController, animated: Bool) {
+        if  viewController is UINavigationController  { return }
         lhw_navigationController?.pushViewController(viewController, animated: animated)
     }
     
