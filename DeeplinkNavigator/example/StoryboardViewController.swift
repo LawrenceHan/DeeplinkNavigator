@@ -10,6 +10,7 @@ import UIKit
 
 final class StoryboardViewController: UIViewController, Titlable {
     override func viewDidLoad() {
+        super.viewDidLoad()
         title = identifier
     }
 }

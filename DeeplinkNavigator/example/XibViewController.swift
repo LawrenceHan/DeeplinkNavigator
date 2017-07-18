@@ -10,6 +10,7 @@ import UIKit
 
 final class XibViewController: UIViewController, Titlable {
     override func viewDidLoad() {
+        super.viewDidLoad()
         title = identifier
     }
 }

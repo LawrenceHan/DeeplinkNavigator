@@ -10,6 +10,7 @@ import UIKit
 
 final class InitViewController: UIViewController, Titlable {
     override func viewDidLoad() {
+        super.viewDidLoad()
         title = identifier
         view.backgroundColor = UIColor.blue
     }
