@@ -168,6 +168,8 @@ open class DeeplinkNavigator {
                 return (item.navigable as! StoryboardNavigable.Type).viewControllerFromStoryBoard(navigation: navigation)
             } else if item.navigable is InitNavigable.Type {
                 return (item.navigable as! InitNavigable.Type).init(navigation: navigation) as? UIViewController
+            } else if item.navigable is XibNavigable.Type {
+                return (item.navigable as! XibNavigable.Type).viewControllerFromXib(navigation: navigation)
             }
         }
         return nil

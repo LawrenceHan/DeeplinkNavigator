@@ -84,3 +84,13 @@ public protocol InitNavigable: DeeplinkNavigable {
     /// - parameter navigation: The navigation information that contains url, values and context.
     init?(navigation: DeeplinkNavigation)
 }
+
+/// For iOS 8 well known xib init bug
+public protocol XibNavigable: DeeplinkNavigable {
+    /// Creates an instance with specified DeeplinkNavigation and returns it. Returns `nil` if the DeeplinkNavigation
+    /// and the values are not met the condition to create an instance.
+    ///
+    /// - Returns: A UIViewController from a Xib
+    @available(iOS, deprecated: 9.0, obsoleted: 9.0, message: "iOS 9 has fixed this bug already, please use init?() instead")
+    static func viewControllerFromXib(navigation: DeeplinkNavigation) -> UIViewController?
+}
