@@ -318,6 +318,15 @@ open class DeeplinkNavigator {
     }
 }
 
+public extension DeeplinkNavigator {
+    public func urlMapKeys() -> [String] {
+        return Array(urlMap.keys)
+    }
+    
+    public func urlOpenHandlersKeys() -> [String] {
+        return Array(deeplinkOpenHandlers.keys)
+    }
+}
 
 // MARK: - Default Navigator
 
