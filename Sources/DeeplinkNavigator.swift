@@ -88,8 +88,8 @@ import UIKit
 open class DeeplinkNavigator {
     
     public struct DeeplinkMapItem {
-        let navigable: DeeplinkNavigable.Type
-        let mappingContext: MappingContext?
+        public let navigable: DeeplinkNavigable.Type
+        public let mappingContext: MappingContext?
     }
     
     /// A closure type which has URL and values for parameters.
