@@ -87,19 +87,19 @@ import UIKit
 /// - seealso: `DeeplinkNavigable`
 open class DeeplinkNavigator {
     
-    struct DeeplinkMapItem {
-        let navigable: DeeplinkNavigable.Type
-        let mappingContext: MappingContext?
+    public struct DeeplinkMapItem {
+        public let navigable: DeeplinkNavigable.Type
+        public let mappingContext: MappingContext?
     }
     
     /// A closure type which has URL and values for parameters.
     public typealias DeeplinkOpenHandler = (_ url: DeeplinkConvertible,_ context: NavigationContext?,_ from: DeeplinkPushable?, _ values: [String: Any]) -> Bool
     
     /// A dictionary to store DeeplinkNaviables by URL patterns.
-    private(set) var urlMap = [String: DeeplinkMapItem]()
+    public private(set) var urlMap = [String: DeeplinkMapItem]()
     
     /// A dictionary to store DeeplinkOpenHandlers by URL patterns.
-    private(set) var deeplinkOpenHandlers = [String: DeeplinkOpenHandler]()
+    public private(set) var deeplinkOpenHandlers = [String: DeeplinkOpenHandler]()
     
     /// A default scheme. If this value is set, it's available to map URL paths without schemes.
     ///
@@ -319,7 +319,6 @@ open class DeeplinkNavigator {
         return false
     }
 }
-
 
 // MARK: - Default Navigator
 
