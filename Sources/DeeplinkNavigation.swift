@@ -52,5 +52,16 @@ public struct DeeplinkNavigation {
     
     /// The context from pushing or presenting a view controller.
     public let navigationContext: NavigationContext?
+    
+    /// Designated initializer
+    public init(url: DeeplinkConvertible,
+                values: [String: Any],
+                mappingContext: MappingContext?,
+                navigationContext: NavigationContext?) {
+        self.url = url
+        self.values = values
+        self.mappingContext = mappingContext
+        self.navigationContext = navigationContext
+    }
 }
 
