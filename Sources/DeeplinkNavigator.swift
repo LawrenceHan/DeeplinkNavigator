@@ -93,7 +93,7 @@ open class DeeplinkNavigator {
     }
     
     /// A closure type which has URL and values for parameters.
-    public typealias DeeplinkOpenHandler = (_ url: DeeplinkConvertible,_ context: NavigationContext?,_ from: DeeplinkPresentable?, _ values: [String: Any]) -> Bool
+    public typealias DeeplinkOpenHandler = (_ url: DeeplinkConvertible,_ context: NavigationContext?,_ from: DeeplinkPushable?, _ values: [String: Any]) -> Bool
     
     /// A dictionary to store DeeplinkNaviables by URL patterns.
     private(set) var urlMap = [String: DeeplinkMapItem]()
@@ -308,7 +308,7 @@ open class DeeplinkNavigator {
     @discardableResult
     open func open(_ url: DeeplinkConvertible,
                    _ context: NavigationContext? = nil,
-                   _ from: DeeplinkPresentable? = nil) -> Bool {
+                   _ from: DeeplinkPushable? = nil) -> Bool {
         let deeplinkOpenHandlersKeys = Array(self.deeplinkOpenHandlers.keys)
         if let urlMatchComponents = DeeplinkMatcher.default.match(url, scheme: self.scheme, from: deeplinkOpenHandlersKeys) {
             let handler = self.deeplinkOpenHandlers[urlMatchComponents.pattern]
