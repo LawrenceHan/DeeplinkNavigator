@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Navigator.map("/InitNavigable", InitViewController.self, context: "I am a InitViewController")
         Navigator.map("/PushOrPop", PushOrPopViewController.self, context: "I am a PushOrPopViewController")
         Navigator.map("/test", TestViewController.self, context: "I am a PushOrPopViewController")
-        Navigator.map("navigator://<path>") { (url, values) -> Bool in
+        Navigator.map("navigator://<path>") {(url, context, from, values) -> Bool in
             return Navigator.push(url) != nil
         }
         return true
