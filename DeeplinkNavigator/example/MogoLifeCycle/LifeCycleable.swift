@@ -25,7 +25,6 @@
 //
 
 import UIKit
-import DeeplinkNavigator
 
 //MARK: - Init方法初始化 InitLifeCycleable可以接在ViewController的头上
 
@@ -68,17 +67,10 @@ extension StoryboardLifeCycleable  where Self : UIViewController {
     
     public static func viewControllerFromStoryBoard(navigation: DeeplinkNavigation) -> UIViewController?{
 
-        if let vc = MGViewControllerManager.ViewControllerInit(viewControllerType: Self.self) {
+        let sb = UIStoryboard(name: "RenterStoryBoard", bundle: nil)
+        if let vc = sb.instantiateViewController(withIdentifier: String(describing: self)) as? Self{
             vc.navigation = navigation
-            return vc
-        }
-        else
-        {
-            let sb = UIStoryboard(name: "RenterStoryBoard", bundle: nil)
-            if let vc = sb.instantiateViewController(withIdentifier: String(describing: self)) as? Self{
-                vc.navigation = navigation
-                return  vc
-            }
+            return  vc
         }
         
         return nil

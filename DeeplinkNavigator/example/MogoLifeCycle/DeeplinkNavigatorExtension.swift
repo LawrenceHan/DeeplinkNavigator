@@ -25,7 +25,6 @@
 //
 
 import UIKit
-import DeeplinkNavigator
 
 public extension DeeplinkNavigator {
     

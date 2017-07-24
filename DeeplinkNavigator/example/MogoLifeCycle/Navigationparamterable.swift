@@ -25,7 +25,8 @@
 //
 
 import UIKit
-import DeeplinkNavigator
+
+let MGPageRequestKey = "needRequestForPage"
 
 //MARK: - get parameter and needRequest
 
