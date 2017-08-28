@@ -8,8 +8,8 @@ target 'DeeplinkNavigator' do
   # Pods for DeeplinkNavigator
    pod 'ReactiveCocoa', '2.5'
    def testing_pods
-   pod 'Quick'
-   pod 'Nimble'
+#   pod 'Quick'
+#   pod 'Nimble'
    end
 
 
