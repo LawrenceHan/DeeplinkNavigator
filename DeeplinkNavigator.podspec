@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "DeeplinkNavigator"
-  s.version      = "0.3.6"
+  s.version      = "0.3.7"
   s.summary      = "Navigating framework."
 
   # This description is used to generate tags and improve search results.
