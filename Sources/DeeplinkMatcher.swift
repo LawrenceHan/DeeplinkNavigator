@@ -73,7 +73,7 @@ open class DeeplinkMatcher {
     public typealias URLValueMatcherHandler = (String) -> Any?
     
     /// A dictionary to store URL value matchers by value type.
-    private var customURLValueMatcherHandlers = [String: URLValueMatcherHandler]()
+    private var customURLValueMatcherHandlers: [String: URLValueMatcherHandler] = [:]
     
     
     // MARK: Singleton

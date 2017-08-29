@@ -92,14 +92,19 @@ open class DeeplinkNavigator {
         public let mappingContext: MappingContext?
     }
     
-    /// A closure type which has URL and values for parameters.
-    public typealias DeeplinkOpenHandler = (_ url: DeeplinkConvertible,_ context: NavigationContext?,_ from: DeeplinkPushable?, _ values: [String: Any]) -> Bool
+    /// A closure type which has URL, context, from and values for parameters.
+    public typealias DeeplinkOpenHandler = (
+        _ url: DeeplinkConvertible,
+        _ context: NavigationContext?,
+        _ from: DeeplinkPushable?,
+        _ values: [String: Any]
+        ) -> Bool
     
     /// A dictionary to store DeeplinkNaviables by URL patterns.
-    public private(set) var urlMap = [String: DeeplinkMapItem]()
+    public private(set) var urlMap: [String: DeeplinkMapItem] = [:]
     
     /// A dictionary to store DeeplinkOpenHandlers by URL patterns.
-    public private(set) var deeplinkOpenHandlers = [String: DeeplinkOpenHandler]()
+    public private(set) var deeplinkOpenHandlers: [String: DeeplinkOpenHandler] = [:]
     
     /// A default scheme. If this value is set, it's available to map URL paths without schemes.
     ///
@@ -312,7 +317,7 @@ open class DeeplinkNavigator {
         let deeplinkOpenHandlersKeys = Array(self.deeplinkOpenHandlers.keys)
         if let urlMatchComponents = DeeplinkMatcher.default.match(url, scheme: self.scheme, from: deeplinkOpenHandlersKeys) {
             let handler = self.deeplinkOpenHandlers[urlMatchComponents.pattern]
-            if handler?(url,context,from, urlMatchComponents.values) == true {
+            if handler?(url, context, from, urlMatchComponents.values) == true {
                 return true
             }
         }
