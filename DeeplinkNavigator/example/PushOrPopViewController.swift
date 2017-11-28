@@ -48,7 +48,7 @@ final class PushOrPopViewController: UIViewController {
         }
     }
     
-    func popTo(_ sender: UIButton) {
+    @objc func popTo(_ sender: UIButton) {
         let color: VCColor
         switch sender.tag {
         case 0:

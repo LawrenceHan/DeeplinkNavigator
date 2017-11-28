@@ -38,14 +38,7 @@
 		029E460F1F177B0C00B95148 /* DeeplinkPushable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02384B381F15BCF500C1537A /* DeeplinkPushable.swift */; };
 		029E46101F177B0C00B95148 /* UIViewController+TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028BD6D61E8A934C000F43E7 /* UIViewController+TopViewController.swift */; };
 		029E46111F177B0C00B95148 /* UIView+TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02384B3A1F163DDA00C1537A /* UIView+TopViewController.swift */; };
-		02E0B7851E77B84100A6845D /* DeeplinkNavigatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E0B7841E77B84100A6845D /* DeeplinkNavigatorTests.swift */; };
-		64F8E4B686033796DBAD8624 /* Pods_example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5102B22019DEF9BCD568D0BF /* Pods_example.framework */; };
-		9E1179F2B8A3353AE59164F2 /* Pods_DeeplinkNavigatorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 229B6E977F9C0F67816E3A91 /* Pods_DeeplinkNavigatorTests.framework */; };
-		E449FED41F25C47A004CCA2C /* DeeplinkNavigatorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E449FED31F25C47A004CCA2C /* DeeplinkNavigatorExtension.swift */; };
-		E449FEE01F25C56F004CCA2C /* LifeCycleable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E449FEDF1F25C56F004CCA2C /* LifeCycleable.swift */; };
-		E449FEE31F25C596004CCA2C /* Navigationparamterable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E449FEE11F25C596004CCA2C /* Navigationparamterable.swift */; };
-		E449FEE41F25C596004CCA2C /* UIViewController+viewDidLoad.swift in Sources */ = {isa = PBXBuildFile; fileRef = E449FEE21F25C596004CCA2C /* UIViewController+viewDidLoad.swift */; };
-		E8317BC473B92584A0C9E15C /* Pods_DeeplinkNavigator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD872989C5D24681D9DED755 /* Pods_DeeplinkNavigator.framework */; };
+		02AD81451FCD24E6003E5ACB /* DeeplinkNavigatorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AD81441FCD24E6003E5ACB /* DeeplinkNavigatorExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,13 +47,6 @@
 			containerPortal = 02E0B7481E7662AD00A6845D /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 029E45FD1F177AF000B95148;
-			remoteInfo = DeeplinkNavigator;
-		};
-		02E0B7871E77B84100A6845D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 02E0B7481E7662AD00A6845D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 02E0B74F1E7662AD00A6845D;
 			remoteInfo = DeeplinkNavigator;
 		};
 /* End PBXContainerItemProxy section */
@@ -104,23 +90,10 @@
 		029E45FE1F177AF000B95148 /* DeeplinkNavigator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DeeplinkNavigator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		029E46001F177AF000B95148 /* DeeplinkNavigator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeeplinkNavigator.h; sourceTree = "<group>"; };
 		029E46011F177AF000B95148 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		02AD81441FCD24E6003E5ACB /* DeeplinkNavigatorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeeplinkNavigatorExtension.swift; sourceTree = "<group>"; };
 		02E0B7501E7662AD00A6845D /* example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = example.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		02E0B7821E77B84100A6845D /* DeeplinkNavigatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DeeplinkNavigatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		02E0B7841E77B84100A6845D /* DeeplinkNavigatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeeplinkNavigatorTests.swift; sourceTree = "<group>"; };
 		02E0B7861E77B84100A6845D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1DAC09620BBDC2FD7FBC5A02 /* Pods-example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-example.release.xcconfig"; path = "Pods/Target Support Files/Pods-example/Pods-example.release.xcconfig"; sourceTree = "<group>"; };
-		229B6E977F9C0F67816E3A91 /* Pods_DeeplinkNavigatorTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DeeplinkNavigatorTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5102B22019DEF9BCD568D0BF /* Pods_example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5396F62F84B656A1D78F223B /* Pods-example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-example/Pods-example.debug.xcconfig"; sourceTree = "<group>"; };
-		AD872989C5D24681D9DED755 /* Pods_DeeplinkNavigator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DeeplinkNavigator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C03281A00AFEEF761C31F4AC /* Pods-DeeplinkNavigatorTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeeplinkNavigatorTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DeeplinkNavigatorTests/Pods-DeeplinkNavigatorTests.debug.xcconfig"; sourceTree = "<group>"; };
-		C128D5DD3B2E7F40E0697A54 /* Pods-DeeplinkNavigatorTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeeplinkNavigatorTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DeeplinkNavigatorTests/Pods-DeeplinkNavigatorTests.release.xcconfig"; sourceTree = "<group>"; };
-		DE3A45DD43B915A0B0D71C34 /* Pods-DeeplinkNavigator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeeplinkNavigator.release.xcconfig"; path = "Pods/Target Support Files/Pods-DeeplinkNavigator/Pods-DeeplinkNavigator.release.xcconfig"; sourceTree = "<group>"; };
-		E449FED31F25C47A004CCA2C /* DeeplinkNavigatorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeeplinkNavigatorExtension.swift; sourceTree = "<group>"; };
-		E449FEDF1F25C56F004CCA2C /* LifeCycleable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LifeCycleable.swift; sourceTree = "<group>"; };
-		E449FEE11F25C596004CCA2C /* Navigationparamterable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Navigationparamterable.swift; sourceTree = "<group>"; };
-		E449FEE21F25C596004CCA2C /* UIViewController+viewDidLoad.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+viewDidLoad.swift"; sourceTree = "<group>"; };
-		EF113720C15360ABE6C4EABC /* Pods-DeeplinkNavigator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeeplinkNavigator.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DeeplinkNavigator/Pods-DeeplinkNavigator.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,7 +101,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E8317BC473B92584A0C9E15C /* Pods_DeeplinkNavigator.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,15 +109,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				029E46051F177AF000B95148 /* DeeplinkNavigator.framework in Frameworks */,
-				64F8E4B686033796DBAD8624 /* Pods_example.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		02E0B77F1E77B84100A6845D /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9E1179F2B8A3353AE59164F2 /* Pods_DeeplinkNavigatorTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -171,7 +134,7 @@
 		029E45DC1F17783E00B95148 /* example */ = {
 			isa = PBXGroup;
 			children = (
-				E42AD6851F25A6CE0008E1F2 /* MogoLifeCycle */,
+				02AD81441FCD24E6003E5ACB /* DeeplinkNavigatorExtension.swift */,
 				029E45DD1F17783E00B95148 /* AppDelegate.swift */,
 				029E45DE1F17783E00B95148 /* Assets.xcassets */,
 				029E45DF1F17783E00B95148 /* LaunchScreen.storyboard */,
@@ -206,8 +169,6 @@
 				029E45DC1F17783E00B95148 /* example */,
 				02E0B7831E77B84100A6845D /* DeeplinkNavigatorTests */,
 				02E0B7511E7662AD00A6845D /* Products */,
-				6B13DE3780889C22789801BD /* Pods */,
-				38520CC512DD5B19FEA178E2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -215,7 +176,6 @@
 			isa = PBXGroup;
 			children = (
 				02E0B7501E7662AD00A6845D /* example.app */,
-				02E0B7821E77B84100A6845D /* DeeplinkNavigatorTests.xctest */,
 				029E45FE1F177AF000B95148 /* DeeplinkNavigator.framework */,
 			);
 			name = Products;
@@ -228,40 +188,6 @@
 				02E0B7861E77B84100A6845D /* Info.plist */,
 			);
 			path = DeeplinkNavigatorTests;
-			sourceTree = "<group>";
-		};
-		38520CC512DD5B19FEA178E2 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				AD872989C5D24681D9DED755 /* Pods_DeeplinkNavigator.framework */,
-				229B6E977F9C0F67816E3A91 /* Pods_DeeplinkNavigatorTests.framework */,
-				5102B22019DEF9BCD568D0BF /* Pods_example.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		6B13DE3780889C22789801BD /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				EF113720C15360ABE6C4EABC /* Pods-DeeplinkNavigator.debug.xcconfig */,
-				DE3A45DD43B915A0B0D71C34 /* Pods-DeeplinkNavigator.release.xcconfig */,
-				C03281A00AFEEF761C31F4AC /* Pods-DeeplinkNavigatorTests.debug.xcconfig */,
-				C128D5DD3B2E7F40E0697A54 /* Pods-DeeplinkNavigatorTests.release.xcconfig */,
-				5396F62F84B656A1D78F223B /* Pods-example.debug.xcconfig */,
-				1DAC09620BBDC2FD7FBC5A02 /* Pods-example.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		E42AD6851F25A6CE0008E1F2 /* MogoLifeCycle */ = {
-			isa = PBXGroup;
-			children = (
-				E449FED31F25C47A004CCA2C /* DeeplinkNavigatorExtension.swift */,
-				E449FEDF1F25C56F004CCA2C /* LifeCycleable.swift */,
-				E449FEE11F25C596004CCA2C /* Navigationparamterable.swift */,
-				E449FEE21F25C596004CCA2C /* UIViewController+viewDidLoad.swift */,
-			);
-			path = MogoLifeCycle;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -282,12 +208,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 029E46071F177AF000B95148 /* Build configuration list for PBXNativeTarget "DeeplinkNavigator" */;
 			buildPhases = (
-				2575003B2C197B898C06C398 /* [CP] Check Pods Manifest.lock */,
 				029E45F91F177AF000B95148 /* Sources */,
 				029E45FA1F177AF000B95148 /* Frameworks */,
 				029E45FB1F177AF000B95148 /* Headers */,
 				029E45FC1F177AF000B95148 /* Resources */,
-				B3A8B8D2EC0F92578A2BA239 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -302,13 +226,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 02E0B7621E7662AD00A6845D /* Build configuration list for PBXNativeTarget "example" */;
 			buildPhases = (
-				F7D3F48294CDB60F17C06FB5 /* [CP] Check Pods Manifest.lock */,
 				02E0B74C1E7662AD00A6845D /* Sources */,
 				02E0B74D1E7662AD00A6845D /* Frameworks */,
 				02E0B74E1E7662AD00A6845D /* Resources */,
 				029E45D01F176EE600B95148 /* Embed Frameworks */,
-				C76EBAE560080809C344E0B5 /* [CP] Embed Pods Frameworks */,
-				94B4C824FE6CE0BA74314FDA /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -320,27 +241,6 @@
 			productReference = 02E0B7501E7662AD00A6845D /* example.app */;
 			productType = "com.apple.product-type.application";
 		};
-		02E0B7811E77B84100A6845D /* DeeplinkNavigatorTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 02E0B7891E77B84100A6845D /* Build configuration list for PBXNativeTarget "DeeplinkNavigatorTests" */;
-			buildPhases = (
-				EC85D4E9F316C657A4DE6FCE /* [CP] Check Pods Manifest.lock */,
-				02E0B77E1E77B84100A6845D /* Sources */,
-				02E0B77F1E77B84100A6845D /* Frameworks */,
-				02E0B7801E77B84100A6845D /* Resources */,
-				B3EA2C2C87A39E2541981E88 /* [CP] Embed Pods Frameworks */,
-				B6342208B4A10E7DBF428833 /* [CP] Copy Pods Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				02E0B7881E77B84100A6845D /* PBXTargetDependency */,
-			);
-			name = DeeplinkNavigatorTests;
-			productName = DeeplinkNavigatorTests;
-			productReference = 02E0B7821E77B84100A6845D /* DeeplinkNavigatorTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -348,24 +248,20 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0820;
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 0910;
 				ORGANIZATIONNAME = Hanguang;
 				TargetAttributes = {
 					029E45FD1F177AF000B95148 = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = 2L4985KKX7;
+						LastSwiftMigration = 0910;
 						ProvisioningStyle = Automatic;
 					};
 					02E0B74F1E7662AD00A6845D = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 2L4985KKX7;
+						LastSwiftMigration = 0910;
 						ProvisioningStyle = Automatic;
-					};
-					02E0B7811E77B84100A6845D = {
-						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 2L4985KKX7;
-						ProvisioningStyle = Automatic;
-						TestTargetID = 02E0B74F1E7662AD00A6845D;
 					};
 				};
 			};
@@ -383,7 +279,6 @@
 			projectRoot = "";
 			targets = (
 				02E0B74F1E7662AD00A6845D /* example */,
-				02E0B7811E77B84100A6845D /* DeeplinkNavigatorTests */,
 				029E45FD1F177AF000B95148 /* DeeplinkNavigator */,
 			);
 		};
@@ -408,149 +303,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		02E0B7801E77B84100A6845D /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		2575003B2C197B898C06C398 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-DeeplinkNavigator-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		94B4C824FE6CE0BA74314FDA /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-example/Pods-example-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B3A8B8D2EC0F92578A2BA239 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DeeplinkNavigator/Pods-DeeplinkNavigator-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B3EA2C2C87A39E2541981E88 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DeeplinkNavigatorTests/Pods-DeeplinkNavigatorTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B6342208B4A10E7DBF428833 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DeeplinkNavigatorTests/Pods-DeeplinkNavigatorTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C76EBAE560080809C344E0B5 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-example/Pods-example-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/ReactiveCocoa/ReactiveCocoa.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveCocoa.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-example/Pods-example-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		EC85D4E9F316C657A4DE6FCE /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-DeeplinkNavigatorTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F7D3F48294CDB60F17C06FB5 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-example-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		029E45F91F177AF000B95148 /* Sources */ = {
@@ -578,10 +331,9 @@
 				029E45F21F17783E00B95148 /* MainViewController.swift in Sources */,
 				028BD6D91E8A934C000F43E7 /* DeeplinkMatcher.swift in Sources */,
 				029E45F41F17783E00B95148 /* StoryboardViewController.swift in Sources */,
-				E449FED41F25C47A004CCA2C /* DeeplinkNavigatorExtension.swift in Sources */,
+				02AD81451FCD24E6003E5ACB /* DeeplinkNavigatorExtension.swift in Sources */,
 				020A7EAF1F1265F800C16785 /* DeeplinkNavigation.swift in Sources */,
 				029E45F11F17783E00B95148 /* InitViewController.swift in Sources */,
-				E449FEE41F25C596004CCA2C /* UIViewController+viewDidLoad.swift in Sources */,
 				028BD6D71E8A934C000F43E7 /* DeeplinkNavigator.swift in Sources */,
 				028BD6DB1E8A934C000F43E7 /* UIViewController+TopViewController.swift in Sources */,
 				029E45F61F17783E00B95148 /* Titlable.swift in Sources */,
@@ -589,17 +341,7 @@
 				029E45F31F17783E00B95148 /* PushOrPopViewController.swift in Sources */,
 				028BD6D81E8A934C000F43E7 /* DeeplinkConvertible.swift in Sources */,
 				029E45EC1F17783E00B95148 /* AppDelegate.swift in Sources */,
-				E449FEE31F25C596004CCA2C /* Navigationparamterable.swift in Sources */,
-				E449FEE01F25C56F004CCA2C /* LifeCycleable.swift in Sources */,
 				028BD6DA1E8A934C000F43E7 /* DeeplinkNavigable.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		02E0B77E1E77B84100A6845D /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				02E0B7851E77B84100A6845D /* DeeplinkNavigatorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -610,11 +352,6 @@
 			isa = PBXTargetDependency;
 			target = 029E45FD1F177AF000B95148 /* DeeplinkNavigator */;
 			targetProxy = 029E46031F177AF000B95148 /* PBXContainerItemProxy */;
-		};
-		02E0B7881E77B84100A6845D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 02E0B74F1E7662AD00A6845D /* example */;
-			targetProxy = 02E0B7871E77B84100A6845D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -640,7 +377,6 @@
 /* Begin XCBuildConfiguration section */
 		029E46081F177AF000B95148 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EF113720C15360ABE6C4EABC /* Pods-DeeplinkNavigator.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "";
@@ -657,7 +393,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.hanguang.app.DeeplinkNavigator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -666,7 +403,6 @@
 		};
 		029E46091F177AF000B95148 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DE3A45DD43B915A0B0D71C34 /* Pods-DeeplinkNavigator.release.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "";
@@ -683,7 +419,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.hanguang.app.DeeplinkNavigator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -699,7 +436,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -707,7 +446,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -748,7 +491,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -756,7 +501,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -783,7 +532,6 @@
 		};
 		02E0B7631E7662AD00A6845D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5396F62F84B656A1D78F223B /* Pods-example.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -793,13 +541,13 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hanguang.app.example;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
 		02E0B7641E7662AD00A6845D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1DAC09620BBDC2FD7FBC5A02 /* Pods-example.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -809,37 +557,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hanguang.app.example;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-			};
-			name = Release;
-		};
-		02E0B78A1E77B84100A6845D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = C03281A00AFEEF761C31F4AC /* Pods-DeeplinkNavigatorTests.debug.xcconfig */;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = 2L4985KKX7;
-				INFOPLIST_FILE = DeeplinkNavigatorTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.hanguang.app.DeeplinkNavigatorTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DeeplinkNavigator.app/DeeplinkNavigator";
-			};
-			name = Debug;
-		};
-		02E0B78B1E77B84100A6845D /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = C128D5DD3B2E7F40E0697A54 /* Pods-DeeplinkNavigatorTests.release.xcconfig */;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = 2L4985KKX7;
-				INFOPLIST_FILE = DeeplinkNavigatorTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.hanguang.app.DeeplinkNavigatorTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DeeplinkNavigator.app/DeeplinkNavigator";
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -869,15 +588,6 @@
 			buildConfigurations = (
 				02E0B7631E7662AD00A6845D /* Debug */,
 				02E0B7641E7662AD00A6845D /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		02E0B7891E77B84100A6845D /* Build configuration list for PBXNativeTarget "DeeplinkNavigatorTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				02E0B78A1E77B84100A6845D /* Debug */,
-				02E0B78B1E77B84100A6845D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

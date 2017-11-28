@@ -214,7 +214,7 @@ open class DeeplinkMatcher {
             return nil
         }
         if typeAndKey.count == 1 { // untyped placeholder
-            return (placeholder, urlPathComponents[index])
+            return (String(placeholder), urlPathComponents[index])
         }
         
         let (type, key) = (typeAndKey[0], typeAndKey[1]) // e.g. ("int", "id")
@@ -242,7 +242,7 @@ open class DeeplinkMatcher {
     
     func replaceRegex(_ pattern: String, _ repl: String, _ string: String) -> String {
         guard let regex = try? NSRegularExpression(pattern: pattern, options: []) else { return string }
-        let range = NSMakeRange(0, string.characters.count)
+        let range = NSMakeRange(0, string.count)
         return regex.stringByReplacingMatches(in: string, options: [], range: range, withTemplate: repl)
     }
 }
